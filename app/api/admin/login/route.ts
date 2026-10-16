@@ -8,8 +8,10 @@ function sessionToken(secret: string) {
 }
 
 export async function POST(request: Request) {
-  // Set ADMIN_PASSWORD in Netlify for a private password. The default keeps first-time setup simple.
-  const secret = process.env.ADMIN_PASSWORD || '123456'
+  const secret = process.env.ADMIN_PASSWORD
+  if (!secret) {
+    return NextResponse.json({ error: 'Admin setup is incomplete. Add ADMIN_PASSWORD in your Netlify site environment variables.' }, { status: 503 })
+  }
   const body = await request.json().catch(() => null)
   if (!body || typeof body.password !== 'string') {
     return NextResponse.json({ error: 'Enter your admin password.' }, { status: 400 })
