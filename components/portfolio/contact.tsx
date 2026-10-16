@@ -19,7 +19,6 @@ export function Contact() {
           <div className="flex flex-wrap items-center gap-4">
             <a href="https://discord.com/app" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-sky px-6 py-3 font-bold text-foreground shadow-pop transition-transform hover:-translate-y-0.5"><MessageCircle className="size-5" aria-hidden="true" /> Contact me on Discord <ArrowUpRight className="size-4" /></a>
             <a href="https://www.fiverr.com/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border-2 border-foreground bg-mint px-6 py-3 font-bold text-foreground shadow-pop transition-transform hover:-translate-y-0.5"><BriefcaseBusiness className="size-5" aria-hidden="true" /> Hire me on Fiverr <ArrowUpRight className="size-4" /></a>
-            <a href="https://github.com/Tejas-pandey1" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border-2 border-primary-foreground/50 px-6 py-3 font-bold transition-colors hover:bg-primary-foreground hover:text-foreground">GitHub <ArrowUpRight className="size-4" /></a>
           </div>
         </div>
       </div>
