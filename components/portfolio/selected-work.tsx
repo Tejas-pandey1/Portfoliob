@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ArrowDown, ArrowUpRight } from 'lucide-react'
 import { SectionHeading } from './section-heading'
 import { cn } from '@/lib/utils'
@@ -18,8 +18,17 @@ const colors: Record<string, string> = {
 
 export function SelectedWork() {
   const [showAll, setShowAll] = useState(false)
-  const projects = [...(projectsData as Project[])].sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured)))
-  const visibleProjects = showAll ? projects : projects.slice(0, 4)
+  const [projects, setProjects] = useState<Project[]>(projectsData as Project[])
+
+  useEffect(() => {
+    fetch('/api/admin/projects', { cache: 'no-store' })
+      .then((response) => response.ok ? response.json() : Promise.reject())
+      .then((data: Project[]) => { if (Array.isArray(data)) setProjects(data) })
+      .catch(() => {})
+  }, [])
+
+  const sortedProjects = [...projects].sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured)))
+  const visibleProjects = showAll ? sortedProjects : sortedProjects.slice(0, 4)
 
   return (
     <section id="work" aria-labelledby="work-title" className="border-y-2 bg-card">
@@ -56,7 +65,7 @@ export function SelectedWork() {
             </li>
           ))}
         </ul>
-        {projects.length > 4 && (
+        {sortedProjects.length > 4 && (
           <div className="mt-14 border-y border-foreground/15">
             <button type="button" onClick={() => setShowAll(!showAll)} className="flex w-full items-center justify-between py-4 text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground">
               <span>{showAll ? 'Show fewer projects' : 'See more projects'}</span>
