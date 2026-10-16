@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shadow Creator | Independent Developer</title>
+<meta name="description" content="Software, websites, games, AI, and other things I've built.">
+<meta name="theme-color" content="#fbf6ec">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-in">
+    <a href="index.html" class="logo" aria-label="Shadow Creator home">
+      <span class="logo-mark">SH</span>
+      <span class="logo-t">SHADOW<br>CREATOR</span>
+    </a>
+
+    <button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="site-nav"><i></i><i></i></button>
+
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <a href="index.html" class="active" aria-current="page">Home</a>
+      <a href="games.html">Games</a>
+      <a href="soundtracks.html">Soundtracks</a>
+      <a href="ai.html">AI</a>
+      <a href="websites.html">Websites</a>
+      <a href="contact.html" class="nav-cta">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- ============ HERO ============ -->
+<section class="hero dots-bg">
+  <div class="wrap hero-in">
+    <div class="hero-text">
+      <span class="pill"><span class="pulse" aria-hidden="true"></span>INDEPENDENT DEVELOPER</span>
+
+      <h1>
+        <span class="tag tag-sun tilt-l">SHADOW</span><br>
+        <span class="tag tag-grape tilt-r">CREATOR</span>
+      </h1>
+
+      <p class="hero-p">Software, websites, games, AI, and other things I've built.</p>
+
+      <div class="btn-row">
+        <a href="#work" class="btn btn-grape">Explore my work <span aria-hidden="true">&darr;</span></a>
+        <a href="contact.html" class="btn btn-white">Contact me</a>
+      </div>
+
+      <!-- Optional stats: fill the numbers/labels in, or delete this block. Empty items are hidden automatically. -->
+      <dl class="stats">
+        <div><dd></dd><dt></dt></div>
+        <div><dd></dd><dt></dt></div>
+        <div><dd></dd><dt></dt></div>
+      </dl>
+    </div>
+
+    <!-- Carousel -->
+    <div class="carousel-wrap">
+      <span class="spinner" aria-hidden="true"></span>
+
+      <div class="carousel" aria-roledescription="carousel" aria-label="Featured work">
+        <article class="slide active" data-color="coral">
+          <div class="slide-img"><img src="uploads/upscalemedia-transformed.webp" alt="Game project showcase"></div>
+          <div class="slide-content">
+            <span class="category">Games</span>
+            <h2>Games I've made</h2>
+            <p>Gameplay-focused projects, weird mechanics, experiments, and games I've built from scratch.</p>
+            <a href="games.html" class="btn btn-sm btn-ink">View games <span aria-hidden="true">&rarr;</span></a>
+          </div>
+        </article>
+
+        <article class="slide" data-color="sun">
+          <div class="slide-img"><img src="uploads/upscalemedia-transformed.jpeg" alt="Soundtrack showcase"></div>
+          <div class="slide-content">
+            <span class="category">Soundtracks</span>
+            <h2>Music I've made</h2>
+            <p>Soundtracks and music created for my games and other projects.</p>
+            <a href="soundtracks.html" class="btn btn-sm btn-ink">Listen <span aria-hidden="true">&rarr;</span></a>
+          </div>
+        </article>
+
+        <article class="slide" data-color="mint">
+          <div class="slide-img"><img src="uploads/upscalemedia-transformed (2).jpeg" alt="AI project showcase"></div>
+          <div class="slide-content">
+            <span class="category">AI</span>
+            <h2>AI projects</h2>
+            <p>Experiments and systems I've built while exploring AI and software development.</p>
+            <a href="ai.html" class="btn btn-sm btn-ink">Explore <span aria-hidden="true">&rarr;</span></a>
+          </div>
+        </article>
+
+        <article class="slide" data-color="sky">
+          <div class="slide-img"><img src="uploads/upscalemedia-transformed (3).jpeg" alt="Website project showcase"></div>
+          <div class="slide-content">
+            <span class="category">Websites</span>
+            <h2>Websites I've built</h2>
+            <p>Websites, web applications, and other things I've created for the web.</p>
+            <a href="websites.html" class="btn btn-sm btn-ink">Explore <span aria-hidden="true">&rarr;</span></a>
+          </div>
+        </article>
+
+        <div class="carousel-controls">
+          <button class="arrow previous" aria-label="Previous slide">&lsaquo;</button>
+          <div class="slide-dots">
+            <button class="dot active" aria-label="Games"></button>
+            <button class="dot" aria-label="Soundtracks"></button>
+            <button class="dot" aria-label="AI"></button>
+            <button class="dot" aria-label="Websites"></button>
+          </div>
+          <button class="arrow next" aria-label="Next slide">&rsaquo;</button>
+        </div>
+      </div>
+
+      <span class="sticker sticker-sun float" style="--tilt:-6deg">Games</span>
+      <span class="sticker sticker-mint float d2" style="--tilt:5deg">AI</span>
+      <span class="sticker sticker-coral float d3" style="--tilt:-3deg">Web</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKILL MARQUEE ============ -->
+<div class="marquee" aria-label="Skills">
+  <div class="marquee-track">
+    <span>Unity</span><b aria-hidden="true"></b><span>C#</span><b aria-hidden="true"></b><span>C</span><b aria-hidden="true"></b><span>Python</span><b aria-hidden="true"></b>
+    <span>HTML</span><b aria-hidden="true"></b><span>CSS</span><b aria-hidden="true"></b><span>JavaScript</span><b aria-hidden="true"></b><span>SQL</span><b aria-hidden="true"></b>
+    <span aria-hidden="true">Unity</span><b aria-hidden="true"></b><span aria-hidden="true">C#</span><b aria-hidden="true"></b><span aria-hidden="true">C</span><b aria-hidden="true"></b><span aria-hidden="true">Python</span><b aria-hidden="true"></b>
+    <span aria-hidden="true">HTML</span><b aria-hidden="true"></b><span aria-hidden="true">CSS</span><b aria-hidden="true"></b><span aria-hidden="true">JavaScript</span><b aria-hidden="true"></b><span aria-hidden="true">SQL</span><b aria-hidden="true"></b>
+  </div>
+</div>
+
+<!-- ============ WORK CARDS ============ -->
+<section class="works" id="work">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">What I make</span>
+      <h2>Pick a <span class="hl hl-sun">category</span>.</h2>
+    </div>
+
+    <div class="cards">
+      <article class="card c-coral">
+        <div class="card-h"><b>01</b><small>Games</small></div>
+        <div class="card-img"><img src="uploads/images.png" alt="Corebound"></div>
+        <h3>Games</h3>
+        <em>Unity · C#</em>
+        <p>Weird mechanics, experiments and games built from scratch.</p>
+        <a href="games.html" class="btn btn-sm btn-ink">View games <span aria-hidden="true">&rarr;</span></a>
+      </article>
+
+      <article class="card c-sun">
+        <div class="card-h"><b>02</b><small>Soundtracks</small></div>
+        <div class="card-img"><img src="uploads/images (2).jpg" alt="Soundtrack art"></div>
+        <h3>Soundtracks</h3>
+        <em>Game music</em>
+        <p>Menu themes and level tracks for my games.</p>
+        <a href="soundtracks.html" class="btn btn-sm btn-ink">Listen <span aria-hidden="true">&rarr;</span></a>
+      </article>
+
+      <article class="card c-mint">
+        <div class="card-h"><b>03</b><small>AI</small></div>
+        <div class="card-img"><img src="uploads/upscalemedia-transformed (2).jpeg" alt="AI"></div>
+        <h3>AI Projects</h3>
+        <em>Chat bots</em>
+        <p>Experiments in AI and software development.</p>
+        <a href="ai.html" class="btn btn-sm btn-ink">Explore <span aria-hidden="true">&rarr;</span></a>
+      </article>
+
+      <article class="card c-sky">
+        <div class="card-h"><b>04</b><small>Websites</small></div>
+        <div class="card-img"><img src="uploads/images (4).jpg" alt="Website"></div>
+        <h3>Websites</h3>
+        <em>HTML · CSS · JS</em>
+        <p>Web apps and other things made for the web.</p>
+        <a href="websites.html" class="btn btn-sm btn-ink">Explore <span aria-hidden="true">&rarr;</span></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section id="services" class="services">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Services</span>
+      <h2>What I <span class="hl hl-mint">specialize</span> in.</h2>
+    </div>
+
+    <ul class="mt-14 grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem;">
+      <!-- AI Integrations - FIRST -->
+      <li class="group flex" style="flex-direction: column; padding: 2rem; border-radius: 1.5rem; border: 2px solid #e5d3b8; background: linear-gradient(135deg, #d4f0ff 0%, #e8f8ff 100%); transition: all 0.3s ease;">
+        <div style="width: 64px; height: 64px; border-radius: 50%; border: 2px solid #333; display: flex; align-items: center; justify-content: center; background: white; margin-bottom: 1.5rem;">
+          <span style="font-size: 2rem;">✨</span>
+        </div>
+        <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #333;">AI Integrations</h3>
+        <p style="color: #666; margin-bottom: 1.5rem; flex: 1;">Build intelligent systems with LLMs, chatbots, AI automation, and smart features.</p>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <span style="padding: 0.5rem 1rem; border-radius: 2rem; border: 1.5px solid #333; font-size: 0.875rem; font-weight: 600; background: white;">LLMs</span>
+          <span style="padding: 0.5rem 1rem; border-radius: 2rem; border: 1.5px solid #333; font-size: 0.875rem; font-weight: 600; background: white;">Chatbots</span>
+          <span style="padding: 0.5rem 1rem; border-radius: 2rem; border: 1.5px solid #333; font-size: 0.875rem; font-weight: 600; background: white;">Automation</span>
+        </div>
+      </li>
+
+      <!-- Apps -->
+      <li class="group flex" style="flex-direction: column; padding: 2rem; border-radius: 1.5rem; border: 2px solid #e5d3b8; background: linear-gradient(135deg, #fef4e4 0%, #fffbf0 100%); transition: all 0.3s ease;">
+        <div style="width: 64px; height: 64px; border-radius: 50%; border: 2px solid #333; display: flex; align-items: center; justify-content: center; background: white; margin-bottom: 1.5rem;">
+          <span style="font-size: 2rem;">📱</span>
+        </div>
+        <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #333;">Apps</h3>
+        <p style="color: #666; margin-bottom: 1.5rem; flex: 1;">Web and mobile apps with clean architecture, real-time data, and interfaces that feel effortless.</p>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <span style="padding: 0.5rem 1rem; border-radius: 2rem; border: 1.5px solid #333; font-size: 0.875rem; font-weight: 600; background: white;">React</span>
+          <span style="padding: 0.5rem 1rem; border-radius: 2rem; border: 1.5px solid #333; font-size: 0.875rem; font-weight: 600; background: white;">Next.js</span>
+          <span style="padding: 0.5rem 1rem; border-radius: 2rem; border: 1.5px solid #333; font-size: 0.875rem; font-weight: 600; background: white;">JavaScript</span>
+        </div>
+      </li>
+
+      <!-- Responsive Websites -->
+      <li class="group flex" style="flex-direction: column; padding: 2rem; border-radius: 1.5rem; border: 2px solid #e5d3b8; background: linear-gradient(135deg, #f0e4ff 0%, #f8f0ff 100%); transition: all 0.3s ease;">
+        <div style="width: 64px; height: 64px; border-radius: 50%; border: 2px solid #333; display: flex; align-items: center; justify-content: center; background: white; margin-bottom: 1.5rem;">
+          <span style="font-size: 2rem;">🌐</span>
+        </div>
+        <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #333;">Responsive Websites</h3>
+        <p style="color: #666; margin-bottom: 1.5rem; flex: 1;">Beautiful, performant websites that work perfectly on all devices and load lightning fast.</p>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <span style="padding: 0.5rem 1rem; border-radius: 2rem; border: 1.5px solid #333; font-size: 0.875rem; font-weight: 600; background: white;">HTML/CSS</span>
+          <span style="padding: 0.5rem 1rem; border-radius: 2rem; border: 1.5px solid #333; font-size: 0.875rem; font-weight: 600; background: white;">Responsive</span>
+          <span style="padding: 0.5rem 1rem; border-radius: 2rem; border: 1.5px solid #333; font-size: 0.875rem; font-weight: 600; background: white;">Performance</span>
+        </div>
+      </li>
+
+      <!-- Game Development -->
+      <li class="group flex" style="flex-direction: column; padding: 2rem; border-radius: 1.5rem; border: 2px solid #e5d3b8; background: linear-gradient(135deg, #e4f4f0 0%, #f0fdfb 100%); transition: all 0.3s ease;">
+        <div style="width: 64px; height: 64px; border-radius: 50%; border: 2px solid #333; display: flex; align-items: center; justify-content: center; background: white; margin-bottom: 1.5rem;">
+          <span style="font-size: 2rem;">🎮</span>
+        </div>
+        <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; color: #333;">Game Development</h3>
+        <p style="color: #666; margin-bottom: 1.5rem; flex: 1;">Engaging games with creative mechanics, polished gameplay, and unique experiences.</p>
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <span style="padding: 0.5rem 1rem; border-radius: 2rem; border: 1.5px solid #333; font-size: 0.875rem; font-weight: 600; background: white;">Unity</span>
+          <span style="padding: 0.5rem 1rem; border-radius: 2rem; border: 1.5px solid #333; font-size: 0.875rem; font-weight: 600; background: white;">C#</span>
+          <span style="padding: 0.5rem 1rem; border-radius: 2rem; border: 1.5px solid #333; font-size: 0.875rem; font-weight: 600; background: white;">Game Design</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ ABOUT / FEATURE ============ -->
+<section class="feature">
+  <div class="wrap feature-in">
+    <div class="feature-text">
+      <span class="eyebrow eyebrow-light">About me</span>
+      <h2>I like making<br><span class="hl hl-coral">things.</span></h2>
+      <p>
+        I enjoy turning ideas into things that actually work.
+        I build software, websites, AI-powered tools, games,
+        and music projects — experimenting with different
+        technologies and figuring things out along the way.
+      </p>
+      <a href="contact.html" class="btn btn-sun">Contact me <span aria-hidden="true">&rarr;</span></a>
+    </div>
+
+    <div class="skills-box">
+      <h3>Tools I use</h3>
+      <ul class="skills">
+        <li class="s-coral">Unity</li>
+        <li class="s-sun">C#</li>
+        <li class="s-mint">C</li>
+        <li class="s-sky">Python</li>
+        <li class="s-grape">HTML</li>
+        <li class="s-coral">CSS</li>
+        <li class="s-sun">JavaScript</li>
+        <li class="s-mint">SQL</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT CTA ============ -->
+<section class="find">
+  <div class="wrap">
+    <div class="find-box">
+      <span class="find-spin" aria-hidden="true"></span>
+      <div>
+        <h2>Want to talk?</h2>
+        <p>Want to collaborate, ask something, talk about a project, or just say hi?</p>
+      </div>
+      <a href="contact.html" class="btn btn-sun">Contact me <span aria-hidden="true">&rarr;</span></a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-in">
+    <a href="index.html" class="logo" aria-label="Shadow Creator home">
+      <span class="logo-mark">SH</span>
+      <span class="logo-t">SHADOW<br>CREATOR</span>
+    </a>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="games.html">Games</a>
+      <a href="soundtracks.html">Soundtracks</a>
+      <a href="ai.html">AI</a>
+      <a href="websites.html">Websites</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <small>© 2026 SHADOW<br>ALL RIGHTS RESERVED</small>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
