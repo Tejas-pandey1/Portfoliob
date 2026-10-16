@@ -1,87 +1,50 @@
+'use client'
+
 import Image from 'next/image'
-import { ArrowUpRight } from 'lucide-react'
+import { useState } from 'react'
+import { ArrowDown, ArrowUpRight } from 'lucide-react'
 import { SectionHeading } from './section-heading'
 import { cn } from '@/lib/utils'
+import projectsData from '@/data/projects.json'
 
-type Project = {
-  title: string
-  category: string
-  description: string
-  image: string
-  stack: string[]
-  color: string
-  href: string
-  linkLabel: string
+type Project = (typeof projectsData)[number]
+const colors: Record<string, string> = {
+  mint: 'bg-mint',
+  sky: 'bg-sky',
+  coral: 'bg-coral',
+  sun: 'bg-sun',
+  card: 'bg-card',
 }
 
-const projects: Project[] = [
-  {
-    title: 'AI Web Scraper',
-    category: 'Developer tool · Personal project',
-    description: 'A fast AI-assisted web scraping utility built with Streamlit and Groq. It removes heavy, irrelevant DOM elements and turns page content into clean JSON data.',
-    image: '/images/project-ai.png',
-    stack: ['Python', 'Streamlit', 'Groq API', 'JSON'],
-    color: 'bg-mint',
-    href: 'https://github.com/Tejas-pandey1/ai-web-scraper',
-    linkLabel: 'View source',
-  },
-  {
-    title: 'Indie Game Development',
-    category: 'Game development',
-    description: 'I’ve independently shipped an indie game and enjoy building interactive experiences, gameplay systems, and polished player-facing details.',
-    image: '/images/project-game.png',
-    stack: ['Unity', 'C#', 'Game design'],
-    color: 'bg-coral',
-    href: 'https://github.com/Tejas-pandey1',
-    linkLabel: 'Explore GitHub',
-  },
-  {
-    title: 'Concept Websites',
-    category: 'Self-initiated concepts · Demo work',
-    description: 'Fictional business website concepts created to demonstrate web design and development skills. These are concept projects, not client commissions.',
-    image: '/images/project-verde.png',
-    stack: ['HTML', 'CSS', 'JavaScript', 'Responsive UI'],
-    color: 'bg-sun',
-    href: 'https://github.com/Tejas-pandey1',
-    linkLabel: 'Explore projects',
-  },
-  {
-    title: 'Custom Web & AI Tools',
-    category: 'Full-stack development',
-    description: 'I build practical web experiences and integrations, connecting clear interfaces with APIs, data, and AI/LLM services where they add value.',
-    image: '/images/project-ledger.png',
-    stack: ['JavaScript', 'REST APIs', 'SQL', 'AI/LLM APIs'],
-    color: 'bg-sky',
-    href: 'https://github.com/Tejas-pandey1',
-    linkLabel: 'Explore GitHub',
-  },
-]
-
 export function SelectedWork() {
+  const [showAll, setShowAll] = useState(false)
+  const projects = projectsData as Project[]
+  const visibleProjects = showAll ? projects : projects.slice(0, 4)
+
   return (
     <section id="work" aria-labelledby="work-title" className="border-y-2 bg-card">
       <div className="mx-auto max-w-6xl px-4 py-24 md:py-32">
         <SectionHeading
           id="work-title"
-          eyebrow="Selected work"
+          eyebrow="The project shelf"
           tagClassName="bg-coral"
-          title={<>Projects built with <span className="text-coral">curiosity.</span></>}
-          description="A mix of personal tools, game development, and clearly labelled concept work. No made-up client names or performance numbers."
+          title={<>Little ideas, <span className="text-coral">real builds.</span></>}
+          description="A living collection of things I’ve made, tested, or am exploring. The newest featured projects sit up front; the rest are one click away."
         />
         <ul className="mt-14 grid gap-10 md:grid-cols-2">
-          {projects.map((project, i) => (
-            <li key={project.title} className={cn(i % 2 === 1 && 'md:mt-16')}>
+          {visibleProjects.map((project, i) => (
+            <li key={project.id} className={cn(i % 2 === 1 && 'md:mt-12')}>
               <article className="group flex flex-col gap-5">
-                <a href={project.href} target="_blank" rel="noreferrer" aria-label={`${project.linkLabel}: ${project.title}`} className={cn('relative block overflow-hidden rounded-3xl border-2 p-4 shadow-pop transition-transform group-hover:-translate-y-1', project.color)}>
-                  <Image src={project.image} alt={`Illustrative preview for ${project.title}`} width={1200} height={750} className="aspect-[16/10] w-full rounded-2xl border-2 object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
-                  <span className="absolute top-7 right-7 rotate-3 rounded-full border-2 bg-card px-3 py-1 text-xs font-bold shadow-pop-sm">{project.linkLabel} ↗</span>
+                <a href={project.href} target="_blank" rel="noreferrer" aria-label={`${project.linkLabel}: ${project.title}`} className={cn('relative block overflow-hidden rounded-3xl border-2 p-4 shadow-pop transition-transform group-hover:-translate-y-1', colors[project.color] ?? 'bg-card')}>
+                  <Image src={project.image} alt={`Preview for ${project.title}`} width={1200} height={750} className="aspect-[16/10] w-full rounded-2xl border-2 object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
+                  <span className="absolute top-7 right-7 rotate-2 rounded-full border-2 bg-card px-3 py-1 text-xs font-bold shadow-pop-sm">{project.linkLabel} ↗</span>
                 </a>
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex flex-col gap-2">
                     <p className="text-sm font-semibold text-muted-foreground">{project.category}</p>
                     <h3 className="font-display text-3xl font-extrabold tracking-tight">{project.title}</h3>
                     <p className="max-w-md leading-relaxed text-pretty text-muted-foreground">{project.description}</p>
-                    <ul className="mt-2 flex flex-wrap gap-2" aria-label={`${project.title} stack`}>
+                    <ul className="mt-2 flex flex-wrap gap-2" aria-label={`${project.title} tools`}>
                       {project.stack.map((tech) => <li key={tech} className="rounded-full border-2 px-3 py-0.5 text-xs font-bold">{tech}</li>)}
                     </ul>
                   </div>
@@ -93,6 +56,13 @@ export function SelectedWork() {
             </li>
           ))}
         </ul>
+        {projects.length > 4 && (
+          <div className="mt-14 flex justify-center">
+            <button type="button" onClick={() => setShowAll(!showAll)} className="inline-flex items-center gap-3 rounded-full border-2 bg-mint px-7 py-3 font-bold shadow-pop transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-pop-sm">
+              {showAll ? 'Show fewer' : 'See more'} <ArrowDown className={cn('size-5 transition-transform', showAll && 'rotate-180')} aria-hidden="true" />
+            </button>
+          </div>
+        )}
       </div>
     </section>
   )
