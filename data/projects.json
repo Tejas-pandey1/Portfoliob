@@ -1,9 +1,71 @@
 [
   {
+    "id": "flipy-bird",
+    "title": "Flipy Bird",
+    "category": "Indie game · Shipped",
+    "description": "A game I independently built and shipped. One of my favourite ways to put gameplay ideas, C#, and Unity into practice.",
+    "image": "/images/project-game.png",
+    "stack": [
+      "C#",
+      "Unity",
+      "Game development"
+    ],
+    "color": "coral",
+    "href": "https://github.com/Tejas-pandey1",
+    "linkLabel": "Explore my GitHub",
+    "featured": true
+  },
+  {
+    "id": "lumen",
+    "title": "LUMEN",
+    "category": "Android app · In development",
+    "description": "An alarm app currently in development. I’m treating it as a work in progress and will add a proper demo and screenshots when they’re ready.",
+    "image": "/images/project-verde.png",
+    "stack": [
+      "Android",
+      "JavaScript"
+    ],
+    "color": "mint",
+    "href": "https://github.com/Tejas-pandey1",
+    "linkLabel": "Explore my GitHub",
+    "featured": true
+  },
+  {
+    "id": "android-calculator",
+    "title": "Android Calculator",
+    "category": "Android app",
+    "description": "A calculator app project built as part of my Android development work. More screenshots and a project-specific link can be added here.",
+    "image": "/images/project-ledger.png",
+    "stack": [
+      "Android",
+      "App development"
+    ],
+    "color": "sky",
+    "href": "https://github.com/Tejas-pandey1",
+    "linkLabel": "Explore my GitHub",
+    "featured": true
+  },
+  {
+    "id": "shooter",
+    "title": "Shooter",
+    "category": "Game development",
+    "description": "A shooter game project focused on interactive gameplay. I’ll add its own build or repository link here when it’s ready to share.",
+    "image": "/images/project-game.png",
+    "stack": [
+      "C#",
+      "Unity",
+      "Gameplay"
+    ],
+    "color": "sun",
+    "href": "https://github.com/Tejas-pandey1",
+    "linkLabel": "Explore my GitHub",
+    "featured": true
+  },
+  {
     "id": "ai-web-scraper",
     "title": "AI Web Scraper",
     "category": "Developer tool · Personal project",
-    "description": "An AI-assisted scraper experiment built around extracting useful page content and turning it into structured data.",
+    "description": "A Python and Streamlit experiment using Groq to help extract useful page content into structured data.",
     "image": "/images/project-ai.png",
     "stack": [
       "Python",
@@ -14,54 +76,6 @@
     "color": "mint",
     "href": "https://github.com/Tejas-pandey1/ai-web-scraper",
     "linkLabel": "View source",
-    "featured": true
-  },
-  {
-    "id": "game-dev",
-    "title": "Game Development",
-    "category": "Game development",
-    "description": "Gameplay experiments and interactive projects. I’ll add individual game builds here as they’re ready to show.",
-    "image": "/images/project-game.png",
-    "stack": [
-      "Unity",
-      "C#",
-      "Game mechanics"
-    ],
-    "color": "coral",
-    "href": "https://github.com/Tejas-pandey1",
-    "linkLabel": "Explore GitHub",
-    "featured": true
-  },
-  {
-    "id": "web-concepts",
-    "title": "Website Concepts",
-    "category": "Self-initiated concepts",
-    "description": "A place for website concepts and frontend experiments. Individual demos can be added here with their own screenshots and links.",
-    "image": "/images/project-verde.png",
-    "stack": [
-      "HTML",
-      "CSS",
-      "JavaScript"
-    ],
-    "color": "sun",
-    "href": "https://github.com/Tejas-pandey1",
-    "linkLabel": "Explore GitHub",
-    "featured": true
-  },
-  {
-    "id": "web-tools",
-    "title": "Web Tools & Experiments",
-    "category": "Personal projects",
-    "description": "Small builds, experiments, and practical tools. This card is a placeholder until there’s a specific project worth featuring.",
-    "image": "/images/project-ledger.png",
-    "stack": [
-      "JavaScript",
-      "APIs",
-      "Python"
-    ],
-    "color": "sky",
-    "href": "https://github.com/Tejas-pandey1",
-    "linkLabel": "Explore GitHub",
-    "featured": true
+    "featured": false
   }
 ]
