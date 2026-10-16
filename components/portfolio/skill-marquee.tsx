@@ -5,12 +5,12 @@ const skills = [
   'Python',
   'SQL',
   'REST APIs',
-  'AI & LLM APIs',
-  'C#',
-  'Unity',
-  'Android',
+  'Flask',
+  'Tailwind CSS',
   'Git',
   'Next.js',
+  'TypeScript',
+  'Groq API',
 ]
 
 const dotColors = ['bg-coral', 'bg-sun', 'bg-mint', 'bg-sky']
