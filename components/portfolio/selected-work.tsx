@@ -57,9 +57,10 @@ export function SelectedWork() {
           ))}
         </ul>
         {projects.length > 4 && (
-          <div className="mt-14 flex justify-center">
-            <button type="button" onClick={() => setShowAll(!showAll)} className="inline-flex items-center gap-3 rounded-full border-2 bg-mint px-7 py-3 font-bold shadow-pop transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-pop-sm">
-              {showAll ? 'Show fewer' : 'See more'} <ArrowDown className={cn('size-5 transition-transform', showAll && 'rotate-180')} aria-hidden="true" />
+          <div className="mt-14 border-y border-foreground/15">
+            <button type="button" onClick={() => setShowAll(!showAll)} className="flex w-full items-center justify-between py-4 text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground">
+              <span>{showAll ? 'Show fewer projects' : 'See more projects'}</span>
+              <ArrowDown className={cn('size-4 transition-transform', showAll && 'rotate-180')} aria-hidden="true" />
             </button>
           </div>
         )}
