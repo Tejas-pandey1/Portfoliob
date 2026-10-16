@@ -36,7 +36,7 @@ export function SelectedWork() {
             <li key={project.id} className={cn(i % 2 === 1 && 'md:mt-12')}>
               <article className="group flex flex-col gap-5">
                 <a href={project.href} target="_blank" rel="noreferrer" aria-label={`${project.linkLabel}: ${project.title}`} className={cn('relative block overflow-hidden rounded-3xl border-2 p-4 shadow-pop transition-transform group-hover:-translate-y-1', colors[project.color] ?? 'bg-card')}>
-                  <Image src={project.image} alt={`Preview for ${project.title}`} width={1200} height={750} className="aspect-[16/10] w-full rounded-2xl border-2 object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
+                  <Image src={project.image} alt={`Preview for ${project.title}`} width={1200} height={750} unoptimized className="aspect-[16/10] w-full rounded-2xl border-2 object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
                   <span className="absolute top-7 right-7 rotate-2 rounded-full border-2 bg-card px-3 py-1 text-xs font-bold shadow-pop-sm">{project.linkLabel} ↗</span>
                 </a>
                 <div className="flex items-start justify-between gap-4">
