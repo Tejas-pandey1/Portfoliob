@@ -2,10 +2,10 @@ import { Code2, Gamepad2, Rocket, Wrench } from 'lucide-react'
 import { SectionHeading } from './section-heading'
 
 const facts = [
-  { icon: Code2, label: 'Likes the details', text: 'A site should feel thoughtful, not just technically alive.', color: 'bg-sun' },
-  { icon: Gamepad2, label: 'Always curious', text: 'Games are a fun excuse to learn how interactive systems fit together.', color: 'bg-coral' },
-  { icon: Wrench, label: 'Practical first', text: 'I enjoy building tools that make an annoying task a little less annoying.', color: 'bg-mint' },
-  { icon: Rocket, label: 'Learn by building', text: 'Try an idea, find the weird edge cases, improve it, repeat.', color: 'bg-sky' },
+  { icon: Code2, label: 'Curious by default', text: 'If I don’t know how something works yet, that’s a reason to explore it.', color: 'bg-mint' },
+  { icon: Gamepad2, label: 'Play matters', text: 'Interactive projects should feel good to use, not just technically function.', color: 'bg-coral' },
+  { icon: Wrench, label: 'Make it useful', text: 'I like turning messy ideas into tools and experiences with a clear purpose.', color: 'bg-sun' },
+  { icon: Rocket, label: 'Always iterating', text: 'Build a version, learn from it, improve the next one. That’s the fun part.', color: 'bg-sky' },
 ]
 
 export function About() {
@@ -13,10 +13,10 @@ export function About() {
     <section id="about" aria-labelledby="about-title" className="mx-auto max-w-6xl px-4 py-24 md:py-32">
       <div className="flex flex-col gap-14 lg:flex-row lg:gap-20">
         <div className="flex flex-1 flex-col gap-8">
-          <SectionHeading id="about-title" eyebrow="A bit about me" tagClassName="bg-mint" title={<>Part problem-solver, <span className="text-grape">part tinkerer.</span></>} />
+          <SectionHeading id="about-title" eyebrow="A bit about me" tagClassName="bg-sun" title={<>Part builder. <span className="text-grape">Part professional tinkerer.</span></>} />
           <div className="flex max-w-xl flex-col gap-5 text-lg leading-relaxed text-pretty text-muted-foreground">
-            <p>I’m Shadow, a developer who likes making things and understanding how they work. I move between websites, small apps, Python tools, and game experiments depending on what the idea needs.</p>
-            <p>My current toolkit includes HTML, CSS, JavaScript, Python, Flask, and C#. I’m still learning as I go, which mostly means there’s always another thing I want to try and probably too many tabs open.</p>
+            <p>I’m Shadow, a student and developer who enjoys figuring things out by making things. I’m interested in web development, practical tools, game development, and the satisfying moment when a half-formed idea finally clicks.</p>
+            <p>I’m still learning, experimenting, and adding to my toolkit. This portfolio is a work in progress on purpose: I’d rather show real projects as they happen than invent a highlight reel.</p>
           </div>
         </div>
         <ul className="grid flex-1 grid-cols-1 gap-5 self-center sm:grid-cols-2">
