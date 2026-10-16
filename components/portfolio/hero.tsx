@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { ArrowDownRight, Gamepad2, Smartphone, Sparkles } from 'lucide-react'
 
 export function Hero() {
@@ -51,8 +50,29 @@ export function Hero() {
 
         <div className="relative w-full max-w-sm flex-1 lg:max-w-md">
           <div aria-hidden="true" className="absolute -top-6 -left-6 size-28 animate-spin-slow rounded-full border-2 border-dashed bg-sky/40" />
-          <div className="relative rotate-2 overflow-hidden rounded-[2rem] border-2 bg-grape shadow-pop">
-            <Image src="/images/portrait.png" alt="Decorative portrait placeholder" width={640} height={760} priority className="aspect-[4/5] w-full object-cover" />
+          <div className="relative rotate-2 overflow-hidden rounded-[2rem] border-2 bg-grape p-4 shadow-pop">
+            <div className="overflow-hidden rounded-2xl border-2 border-foreground/20 bg-[#17151f] text-[#f8f4ff]">
+              <div className="flex items-center gap-2 border-b border-white/10 px-4 py-3">
+                <span className="size-3 rounded-full bg-coral" />
+                <span className="size-3 rounded-full bg-sun" />
+                <span className="size-3 rounded-full bg-mint" />
+                <span className="ml-2 text-xs text-white/60">shadow — workspace</span>
+              </div>
+              <div className="min-h-[340px] p-6 font-mono text-sm leading-7 sm:p-8">
+                <p className="text-[#a6e3a1]">// turning ideas into projects</p>
+                <p className="mt-5"><span className="text-[#cba6f7]">const</span> developer = {'{'}</p>
+                <p className="pl-5">name: <span className="text-[#f9e2af]">'Shadow'</span>,</p>
+                <p className="pl-5">focus: [</p>
+                <p className="pl-10 text-[#f9e2af]">'Web development',</p>
+                <p className="pl-10 text-[#f9e2af]">'AI tools',</p>
+                <p className="pl-10 text-[#f9e2af]">'Game development'</p>
+                <p className="pl-5">],</p>
+                <p className="pl-5">status: <span className="text-[#a6e3a1]">'building'</span></p>
+                <p>{'}'}</p>
+                <p className="mt-5 text-[#89b4fa]">{"// ship something cool ✦"}</p>
+                <p className="mt-3 animate-pulse text-[#a6e3a1]">▌</p>
+              </div>
+            </div>
           </div>
           <div style={{ '--tilt': '-6deg' } as React.CSSProperties} className="absolute -bottom-6 -left-4 flex animate-float items-center gap-2 rounded-2xl border-2 bg-sun px-4 py-3 font-bold shadow-pop-sm">
             <Gamepad2 className="size-5" aria-hidden="true" /> Game dev
