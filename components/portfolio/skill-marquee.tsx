@@ -6,11 +6,11 @@ const skills = [
   'SQL',
   'REST APIs',
   'Flask',
-  'Tailwind CSS',
+  'C#',
+  'Unity',
+  'Android',
   'Git',
   'Next.js',
-  'TypeScript',
-  'Groq API',
 ]
 
 const dotColors = ['bg-coral', 'bg-sun', 'bg-mint', 'bg-sky']
