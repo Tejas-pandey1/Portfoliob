@@ -2,10 +2,10 @@ import { Code2, Gamepad2, Rocket, Wrench } from 'lucide-react'
 import { SectionHeading } from './section-heading'
 
 const facts = [
-  { icon: Code2, label: 'Full-stack thinking', text: 'From interface to APIs and database logic.', color: 'bg-sun' },
-  { icon: Gamepad2, label: 'Game development', text: 'Building interactive experiences with Unity and C#.', color: 'bg-coral' },
-  { icon: Wrench, label: 'Practical tools', text: 'Custom utilities that solve real workflow problems.', color: 'bg-mint' },
-  { icon: Rocket, label: 'End-to-end building', text: 'Taking projects from an initial idea toward a working release.', color: 'bg-sky' },
+  { icon: Code2, label: 'Likes the details', text: 'A site should feel thoughtful, not just technically alive.', color: 'bg-sun' },
+  { icon: Gamepad2, label: 'Always curious', text: 'Games are a fun excuse to learn how interactive systems fit together.', color: 'bg-coral' },
+  { icon: Wrench, label: 'Practical first', text: 'I enjoy building tools that make an annoying task a little less annoying.', color: 'bg-mint' },
+  { icon: Rocket, label: 'Learn by building', text: 'Try an idea, find the weird edge cases, improve it, repeat.', color: 'bg-sky' },
 ]
 
 export function About() {
@@ -13,10 +13,10 @@ export function About() {
     <section id="about" aria-labelledby="about-title" className="mx-auto max-w-6xl px-4 py-24 md:py-32">
       <div className="flex flex-col gap-14 lg:flex-row lg:gap-20">
         <div className="flex flex-1 flex-col gap-8">
-          <SectionHeading id="about-title" eyebrow="About me" tagClassName="bg-mint" title={<>Curious mind. <span className="text-grape">Builder mindset.</span></>} />
+          <SectionHeading id="about-title" eyebrow="A bit about me" tagClassName="bg-mint" title={<>Part problem-solver, <span className="text-grape">part tinkerer.</span></>} />
           <div className="flex max-w-xl flex-col gap-5 text-lg leading-relaxed text-pretty text-muted-foreground">
-            <p>I’m Shadow, an independent developer working across web development, AI-powered tools, Android apps, and games. I enjoy figuring out how things work and turning a rough idea into something people can actually use.</p>
-            <p>My toolkit includes JavaScript, HTML, CSS, Python, SQL, REST APIs, AI/LLM APIs, C#, and Unity. I like solving the whole problem — not just making something look good, but helping it work reliably too.</p>
+            <p>I’m Shadow, a developer who likes making things and understanding how they work. I move between websites, small apps, Python tools, and game experiments depending on what the idea needs.</p>
+            <p>My current toolkit includes HTML, CSS, JavaScript, Python, Flask, and C#. I’m still learning as I go, which mostly means there’s always another thing I want to try and probably too many tabs open.</p>
           </div>
         </div>
         <ul className="grid flex-1 grid-cols-1 gap-5 self-center sm:grid-cols-2">
