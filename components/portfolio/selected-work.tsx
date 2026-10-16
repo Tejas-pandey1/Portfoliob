@@ -18,7 +18,7 @@ const colors: Record<string, string> = {
 
 export function SelectedWork() {
   const [showAll, setShowAll] = useState(false)
-  const projects = projectsData as Project[]
+  const projects = [...(projectsData as Project[])].sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured)))
   const visibleProjects = showAll ? projects : projects.slice(0, 4)
 
   return (
