@@ -1,16 +1,16 @@
 const skills = [
-  'React',
-  'Next.js',
-  'TypeScript',
-  'React Native',
-  'OpenAI & LLMs',
-  'Node.js',
-  'Tailwind CSS',
+  'HTML',
+  'CSS',
+  'JavaScript',
+  'Python',
+  'SQL',
+  'REST APIs',
+  'AI & LLM APIs',
+  'C#',
   'Unity',
-  'Phaser',
-  'Three.js',
-  'PostgreSQL',
-  'Figma',
+  'Android',
+  'Git',
+  'Next.js',
 ]
 
 const dotColors = ['bg-coral', 'bg-sun', 'bg-mint', 'bg-sky']
@@ -21,16 +21,9 @@ export function SkillMarquee() {
       <div className="flex overflow-hidden">
         <ul className="flex shrink-0 animate-marquee items-center gap-8 pr-8">
           {[...skills, ...skills].map((skill, i) => (
-            <li
-              key={`${skill}-${i}`}
-              aria-hidden={i >= skills.length}
-              className="flex items-center gap-8 font-display text-2xl font-bold whitespace-nowrap md:text-3xl"
-            >
+            <li key={`${skill}-${i}`} aria-hidden={i >= skills.length} className="flex items-center gap-8 font-display text-2xl font-bold whitespace-nowrap md:text-3xl">
               {skill}
-              <span
-                aria-hidden="true"
-                className={`size-4 rounded-full border-2 border-foreground ${dotColors[i % dotColors.length]}`}
-              />
+              <span aria-hidden="true" className={`size-4 rounded-full border-2 border-foreground ${dotColors[i % dotColors.length]}`} />
             </li>
           ))}
         </ul>
