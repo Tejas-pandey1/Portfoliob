@@ -15,7 +15,8 @@ function expectedSession(secret: string) {
 }
 
 async function isAdmin() {
-  const secret = process.env.ADMIN_PASSWORD || '123456'
+  const secret = process.env.ADMIN_PASSWORD
+  if (!secret) return false
   const jar = await cookies()
   const value = jar.get('shadow_portfolio_admin')?.value
   if (!value) return false
