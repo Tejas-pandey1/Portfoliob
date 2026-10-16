@@ -1,0 +1,67 @@
+[
+  {
+    "id": "ai-web-scraper",
+    "title": "AI Web Scraper",
+    "category": "Developer tool · Personal project",
+    "description": "An AI-assisted scraper experiment built around extracting useful page content and turning it into structured data.",
+    "image": "/images/project-ai.png",
+    "stack": [
+      "Python",
+      "Streamlit",
+      "Groq API",
+      "JSON"
+    ],
+    "color": "mint",
+    "href": "https://github.com/Tejas-pandey1/ai-web-scraper",
+    "linkLabel": "View source",
+    "featured": true
+  },
+  {
+    "id": "game-dev",
+    "title": "Game Development",
+    "category": "Game development",
+    "description": "Gameplay experiments and interactive projects. I’ll add individual game builds here as they’re ready to show.",
+    "image": "/images/project-game.png",
+    "stack": [
+      "Unity",
+      "C#",
+      "Game mechanics"
+    ],
+    "color": "coral",
+    "href": "https://github.com/Tejas-pandey1",
+    "linkLabel": "Explore GitHub",
+    "featured": true
+  },
+  {
+    "id": "web-concepts",
+    "title": "Website Concepts",
+    "category": "Self-initiated concepts",
+    "description": "A place for website concepts and frontend experiments. Individual demos can be added here with their own screenshots and links.",
+    "image": "/images/project-verde.png",
+    "stack": [
+      "HTML",
+      "CSS",
+      "JavaScript"
+    ],
+    "color": "sun",
+    "href": "https://github.com/Tejas-pandey1",
+    "linkLabel": "Explore GitHub",
+    "featured": true
+  },
+  {
+    "id": "web-tools",
+    "title": "Web Tools & Experiments",
+    "category": "Personal projects",
+    "description": "Small builds, experiments, and practical tools. This card is a placeholder until there’s a specific project worth featuring.",
+    "image": "/images/project-ledger.png",
+    "stack": [
+      "JavaScript",
+      "APIs",
+      "Python"
+    ],
+    "color": "sky",
+    "href": "https://github.com/Tejas-pandey1",
+    "linkLabel": "Explore GitHub",
+    "featured": true
+  }
+]
