@@ -7,10 +7,10 @@ const geistSans = Geist({ subsets: ['latin'], variable: '--font-geist-sans' })
 const bricolage = Bricolage_Grotesque({ subsets: ['latin'], variable: '--font-bricolage' })
 
 export const metadata: Metadata = {
-  title: 'Alex Morgan — Indie Developer: Apps, AI, Websites & Games',
+  title: 'Shadow — Full-Stack & Game Developer',
   description:
-    'Alex Morgan is an indie developer who designs and builds apps, AI integrations, responsive websites, and games — from idea to launch.',
-  generator: 'v0.app',
+    'Shadow is an independent full-stack and game developer building websites, web apps, AI-powered tools, Android apps, and games.',
+  generator: 'Next.js',
   icons: {
     icon: [
       { url: '/icon-light-32x32.png', media: '(prefers-color-scheme: light)' },
