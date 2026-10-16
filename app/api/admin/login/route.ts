@@ -8,10 +8,8 @@ function sessionToken(secret: string) {
 }
 
 export async function POST(request: Request) {
-  const secret = process.env.ADMIN_PASSWORD
-  if (!secret || !process.env.GITHUB_TOKEN) {
-    return NextResponse.json({ error: 'Admin mode needs ADMIN_PASSWORD and GITHUB_TOKEN environment variables.' }, { status: 503 })
-  }
+  // Set ADMIN_PASSWORD in Netlify for a private password. The default keeps first-time setup simple.
+  const secret = process.env.ADMIN_PASSWORD || '123456'
   const body = await request.json().catch(() => null)
   if (!body || typeof body.password !== 'string') {
     return NextResponse.json({ error: 'Enter your admin password.' }, { status: 400 })
