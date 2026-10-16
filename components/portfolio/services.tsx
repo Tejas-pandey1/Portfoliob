@@ -36,8 +36,8 @@ const services: Service[] = [
   },
   {
     icon: Database,
-    title: 'Databases & backend',
-    description: 'The behind-the-scenes bits that keep an app organised: data models, server logic, and API connections.',
+    title: 'Databases',
+    description: 'Organising information properly so apps can store, find, and use data when they need it.',
     tags: ['Python', 'Flask', 'APIs', 'SQL'],
     color: 'bg-sun',
   },
