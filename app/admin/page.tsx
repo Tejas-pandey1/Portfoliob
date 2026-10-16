@@ -38,6 +38,11 @@ export default function AdminPage() {
       const response = await fetch('/api/admin/login', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ password }) })
       const data = await response.json()
       if (!response.ok) throw new Error(data.error || 'Could not sign in.')
+      const projectsResponse = await fetch('/api/admin/projects', { cache: 'no-store' })
+      if (projectsResponse.ok) {
+        const savedProjects = await projectsResponse.json()
+        if (Array.isArray(savedProjects)) setProjects(savedProjects as Project[])
+      }
       setSignedIn(true); setPassword('')
     } catch (e) { setError(e instanceof Error ? e.message : 'Could not sign in.') }
     finally { setBusy(false) }
@@ -57,7 +62,7 @@ export default function AdminPage() {
       const response = await fetch('/api/admin/projects', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(projects) })
       const data = await response.json()
       if (!response.ok) throw new Error(data.error || 'Could not save projects.')
-      setMessage(data.message || 'Saved.')
+      setMessage(data.message || 'Saved to Netlify.')
     } catch (e) { setError(e instanceof Error ? e.message : 'Could not save projects.') }
     finally { setBusy(false) }
   }
@@ -86,7 +91,7 @@ export default function AdminPage() {
     <main className="min-h-screen bg-background px-4 py-10">
       <div className="mx-auto flex max-w-5xl flex-col gap-6">
         <header className="flex flex-wrap items-center justify-between gap-4">
-          <div><a href="/" className="text-sm font-bold text-muted-foreground">← View portfolio</a><h1 className="mt-2 font-display text-4xl font-extrabold">Project control room</h1><p className="mt-2 text-muted-foreground">Edit the cards, then save. Saving commits your changes to GitHub.</p></div>
+          <div><a href="/" className="text-sm font-bold text-muted-foreground">← View portfolio</a><h1 className="mt-2 font-display text-4xl font-extrabold">Project control room</h1><p className="mt-2 text-muted-foreground">Edit project details, screenshots, links, and featured cards, then save. Changes are stored on Netlify and shown to everyone.</p></div>
           <button onClick={addProject} className="rounded-full border-2 bg-mint px-5 py-3 font-bold shadow-pop">+ Add project</button>
         </header>
         {projects.map((project, index) => (
@@ -106,8 +111,8 @@ export default function AdminPage() {
         ))}
         {error && <p role="alert" className="rounded-xl bg-red-100 p-3 text-sm font-semibold text-red-800">{error}</p>}
         {message && <p role="status" className="rounded-xl bg-mint p-3 text-sm font-semibold">{message}</p>}
-        <div className="flex flex-wrap gap-3"><button onClick={save} disabled={busy} className="rounded-full border-2 bg-grape px-6 py-3 font-bold text-white shadow-pop disabled:opacity-60">{busy ? 'Saving…' : 'Save changes to GitHub'}</button><button onClick={() => router.push('/')} className="rounded-full border-2 bg-card px-6 py-3 font-bold">Done</button></div>
-        <p className="pb-10 text-sm text-muted-foreground">After saving, GitHub will trigger a fresh deployment if your hosting is connected to this repository. Only share the admin password with yourself.</p>
+        <div className="flex flex-wrap gap-3"><button onClick={save} disabled={busy} className="rounded-full border-2 bg-grape px-6 py-3 font-bold text-white shadow-pop disabled:opacity-60">{busy ? 'Saving…' : 'Save changes'}</button><button onClick={() => router.push('/')} className="rounded-full border-2 bg-card px-6 py-3 font-bold">Done</button></div>
+        <p className="pb-10 text-sm text-muted-foreground">Project edits are saved separately from the code, so they survive future deployments. Keep your admin password private.</p>
       </div>
     </main>
   )
