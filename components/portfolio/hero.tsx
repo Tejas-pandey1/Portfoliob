@@ -11,50 +11,35 @@ export function Hero() {
               <span className="absolute inline-flex size-full animate-ping rounded-full bg-mint" />
               <span className="relative inline-flex size-2.5 rounded-full border border-foreground bg-mint" />
             </span>
-            Open for new projects — Nov 2026
+            Independent developer · Open to projects
           </p>
 
-          <h1
-            id="hero-title"
-            className="font-display text-5xl leading-[0.95] font-extrabold tracking-tight text-balance sm:text-6xl lg:text-7xl"
-          >
+          <h1 id="hero-title" className="font-display text-5xl leading-[0.95] font-extrabold tracking-tight text-balance sm:text-6xl lg:text-7xl">
             I build{' '}
-            <span className="inline-block -rotate-2 rounded-xl border-2 bg-sun px-3 shadow-pop-sm">apps</span>,{' '}
-            <span className="inline-block rotate-1 rounded-xl border-2 bg-mint px-3 shadow-pop-sm">AI tools</span>,{' '}
-            websites &amp;{' '}
-            <span className="inline-block -rotate-1 rounded-xl border-2 bg-coral px-3 shadow-pop-sm">games</span>{' '}
-            people love.
+            <span className="inline-block -rotate-2 rounded-xl border-2 bg-sun px-3 shadow-pop-sm">websites</span>,{' '}
+            <span className="inline-block rotate-1 rounded-xl border-2 bg-mint px-3 shadow-pop-sm">AI tools</span>, apps &amp;{' '}
+            <span className="inline-block -rotate-1 rounded-xl border-2 bg-coral px-3 shadow-pop-sm">games</span>.
           </h1>
 
           <p className="max-w-xl text-lg leading-relaxed text-pretty text-muted-foreground">
-            {"Hey, I'm "}
-            <strong className="font-semibold text-foreground">Alex Morgan</strong>
-            {
-              ' — an indie developer who takes ideas from napkin sketch to shipped product. Fast, responsive, and with a little bit of delight baked into every pixel.'
-            }
+            Hey, I’m <strong className="font-semibold text-foreground">Shadow</strong> — an independent full-stack and game developer. I turn ideas into useful digital products, from responsive websites and custom tools to AI integrations, Android apps, and games.
           </p>
 
           <div className="flex flex-wrap items-center gap-4">
-            <a
-              href="#work"
-              className="group inline-flex items-center gap-2 rounded-full border-2 bg-grape px-6 py-3 font-bold text-primary-foreground shadow-pop transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-pop-sm"
-            >
+            <a href="#work" className="group inline-flex items-center gap-2 rounded-full border-2 bg-grape px-6 py-3 font-bold text-primary-foreground shadow-pop transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-pop-sm">
               See my work
               <ArrowDownRight className="size-5 transition-transform group-hover:rotate-45" aria-hidden="true" />
             </a>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 rounded-full border-2 bg-card px-6 py-3 font-bold shadow-pop transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-pop-sm"
-            >
+            <a href="#contact" className="inline-flex items-center gap-2 rounded-full border-2 bg-card px-6 py-3 font-bold shadow-pop transition-all hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-pop-sm">
               Start a project
             </a>
           </div>
 
           <dl className="flex flex-wrap gap-8 pt-2">
             {[
-              { value: '40+', label: 'Projects shipped' },
-              { value: '6 yrs', label: 'Building solo' },
-              { value: '250k', label: 'Players & users' },
+              { value: 'Web', label: 'Full-stack development' },
+              { value: 'AI', label: 'Tools & integrations' },
+              { value: 'Games', label: 'Unity development' },
             ].map((stat) => (
               <div key={stat.label} className="flex flex-col">
                 <dt className="order-2 text-sm text-muted-foreground">{stat.label}</dt>
@@ -65,41 +50,18 @@ export function Hero() {
         </div>
 
         <div className="relative w-full max-w-sm flex-1 lg:max-w-md">
-          <div
-            aria-hidden="true"
-            className="absolute -top-6 -left-6 size-28 animate-spin-slow rounded-full border-2 border-dashed bg-sky/40"
-          />
+          <div aria-hidden="true" className="absolute -top-6 -left-6 size-28 animate-spin-slow rounded-full border-2 border-dashed bg-sky/40" />
           <div className="relative rotate-2 overflow-hidden rounded-[2rem] border-2 bg-grape shadow-pop">
-            <Image
-              src="/images/portrait.png"
-              alt="Portrait of Alex Morgan"
-              width={640}
-              height={760}
-              priority
-              className="aspect-[4/5] w-full object-cover"
-            />
+            <Image src="/images/portrait.png" alt="Decorative portrait placeholder" width={640} height={760} priority className="aspect-[4/5] w-full object-cover" />
           </div>
-
-          <div
-            style={{ '--tilt': '-6deg' } as React.CSSProperties}
-            className="absolute -bottom-6 -left-4 flex animate-float items-center gap-2 rounded-2xl border-2 bg-sun px-4 py-3 font-bold shadow-pop-sm"
-          >
-            <Gamepad2 className="size-5" aria-hidden="true" />
-            Game dev
+          <div style={{ '--tilt': '-6deg' } as React.CSSProperties} className="absolute -bottom-6 -left-4 flex animate-float items-center gap-2 rounded-2xl border-2 bg-sun px-4 py-3 font-bold shadow-pop-sm">
+            <Gamepad2 className="size-5" aria-hidden="true" /> Game dev
           </div>
-          <div
-            style={{ '--tilt': '5deg', animationDelay: '1.5s' } as React.CSSProperties}
-            className="absolute top-10 -right-4 flex animate-float items-center gap-2 rounded-2xl border-2 bg-mint px-4 py-3 font-bold shadow-pop-sm"
-          >
-            <Sparkles className="size-5" aria-hidden="true" />
-            AI magic
+          <div style={{ '--tilt': '5deg', animationDelay: '1.5s' } as React.CSSProperties} className="absolute top-10 -right-4 flex animate-float items-center gap-2 rounded-2xl border-2 bg-mint px-4 py-3 font-bold shadow-pop-sm">
+            <Sparkles className="size-5" aria-hidden="true" /> AI tools
           </div>
-          <div
-            style={{ '--tilt': '-3deg', animationDelay: '3s' } as React.CSSProperties}
-            className="absolute -right-2 bottom-20 flex animate-float items-center gap-2 rounded-2xl border-2 bg-coral px-4 py-3 font-bold shadow-pop-sm"
-          >
-            <Smartphone className="size-5" aria-hidden="true" />
-            Mobile-first
+          <div style={{ '--tilt': '-3deg', animationDelay: '3s' } as React.CSSProperties} className="absolute -right-2 bottom-20 flex animate-float items-center gap-2 rounded-2xl border-2 bg-coral px-4 py-3 font-bold shadow-pop-sm">
+            <Smartphone className="size-5" aria-hidden="true" /> Android apps
           </div>
         </div>
       </div>
