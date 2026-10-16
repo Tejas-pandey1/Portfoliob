@@ -63,7 +63,7 @@ export default function AdminPage() {
   }
 
   function addProject() {
-    setProjects((current) => [...current, { ...blankProject, id: `project-${Date.now()}` }])
+    setProjects((current) => [{ ...blankProject, id: `project-${Date.now()}`, featured: true }, ...current])
   }
 
   if (!signedIn) return (
