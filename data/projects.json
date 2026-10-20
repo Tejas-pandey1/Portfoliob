@@ -1,81 +1,257 @@
 [
   {
-    "id": "flipy-bird",
-    "title": "Flipy Bird",
-    "category": "Indie game · Shipped",
-    "description": "A game I independently built and shipped. One of my favourite ways to put gameplay ideas, C#, and Unity into practice.",
-    "image": "/images/project-game.png",
+    "id": "brine-bloom",
+    "title": "Brine & Bloom",
+    "category": "AI integration · Web design",
+    "description": "A polished concept storefront for a premium pickle brand, combining distinctive web design with an integrated AI assistant for product and pickling questions.",
+    "image": "/images/project-ai.png",
     "stack": [
-      "C#",
-      "Unity",
-      "Game development"
-    ],
-    "color": "coral",
-    "href": "https://github.com/Tejas-pandey1",
-    "linkLabel": "Explore my GitHub",
-    "featured": true
-  },
-  {
-    "id": "lumen",
-    "title": "LUMEN",
-    "category": "Android app · In development",
-    "description": "An alarm app currently in development. I’m treating it as a work in progress and will add a proper demo and screenshots when they’re ready.",
-    "image": "/images/project-verde.png",
-    "stack": [
-      "Android",
-      "JavaScript"
+      "Web design",
+      "AI integration",
+      "Chatbot",
+      "Vercel"
     ],
     "color": "mint",
-    "href": "https://github.com/Tejas-pandey1",
-    "linkLabel": "Explore my GitHub",
+    "href": "https://brine-ai.vercel.app/",
+    "linkLabel": "View live site",
     "featured": true
   },
   {
-    "id": "android-calculator",
-    "title": "Android Calculator",
-    "category": "Android app",
-    "description": "A calculator app project built as part of my Android development work. More screenshots and a project-specific link can be added here.",
+    "id": "resident-management",
+    "title": "Resident Management",
+    "category": "Web application · Data management",
+    "description": "A resident management platform concept featuring a login system and structured data-management workflows.",
+    "image": "/images/project-atlas.png",
+    "stack": [
+      "Web app",
+      "Authentication",
+      "Data management"
+    ],
+    "color": "sky",
+    "href": "https://management-website-b6bi.onrender.com",
+    "linkLabel": "View live site",
+    "featured": true
+  },
+  {
+    "id": "weather-ai",
+    "title": "Weather AI",
+    "category": "Android app · AI integration",
+    "description": "An Android weather app that pairs weather information with AI-assisted guidance to help users think through everyday plans and decisions.",
+    "image": "/images/project-pulse.png",
+    "stack": [
+      "Android",
+      "Weather",
+      "AI integration"
+    ],
+    "color": "sun",
+    "href": "https://shadowknightrpg.itch.io/weather-ai",
+    "linkLabel": "View app",
+    "featured": true
+  },
+  {
+    "id": "corebound",
+    "title": "COREBOUND",
+    "category": "Indie game · Unity",
+    "description": "A 2D pixel-art metroidvania set in a factory. Explore, unlock abilities, battle enemies, collect coins, and take on the final boss.",
+    "image": "/images/project-game.png",
+    "stack": [
+      "Unity",
+      "C#",
+      "Pixel art",
+      "Metroidvania"
+    ],
+    "color": "coral",
+    "href": "https://shadowknightrpg.itch.io/corebound",
+    "linkLabel": "Play game",
+    "featured": true
+  },
+  {
+    "id": "dentist-concept",
+    "title": "Dentist Concept Site",
+    "category": "Website concept · UI design",
+    "description": "A concept website for a dental practice, built to showcase clean service-focused layout, visual hierarchy, and professional web design.",
+    "image": "/images/project-verde.png",
+    "stack": [
+      "Web design",
+      "UI/UX",
+      "Responsive layout"
+    ],
+    "color": "mint",
+    "href": "https://dentist-concept-site.vercel.app/",
+    "linkLabel": "View live site",
+    "featured": true
+  },
+  {
+    "id": "crab-ai",
+    "title": "Crab AI",
+    "category": "AI experiment · Chatbot",
+    "description": "A playful AI chatbot built for experimentation, casual conversations, and testing a little crab-flavoured humour.",
+    "image": "/images/project-ai.png",
+    "stack": [
+      "AI chatbot",
+      "Web app",
+      "Experiment"
+    ],
+    "color": "coral",
+    "href": "https://crab-ai-thing.onrender.com",
+    "linkLabel": "Try Crab AI",
+    "featured": false
+  },
+  {
+    "id": "utility-website",
+    "title": "Everyday Utility Toolkit",
+    "category": "Web application · Utilities",
+    "description": "A collection of handy everyday tools, including currency conversion, length conversion, and many other quick utilities in one place.",
+    "image": "/images/project-atlas.png",
+    "stack": [
+      "Web app",
+      "JavaScript",
+      "Utility tools"
+    ],
+    "color": "sky",
+    "href": "https://utilitywebsitebyshadow.netlify.app/",
+    "linkLabel": "Open toolkit",
+    "featured": false
+  },
+  {
+    "id": "calculator-app",
+    "title": "Scientific Calculator",
+    "category": "Android app · Productivity",
+    "description": "A scientific calculator app with calculation history, designed to make everyday and more advanced calculations easy to revisit.",
     "image": "/images/project-ledger.png",
     "stack": [
       "Android",
-      "App development"
-    ],
-    "color": "sky",
-    "href": "https://github.com/Tejas-pandey1",
-    "linkLabel": "Explore my GitHub",
-    "featured": true
-  },
-  {
-    "id": "shooter",
-    "title": "Shooter",
-    "category": "Game development",
-    "description": "A shooter game project focused on interactive gameplay. I’ll add its own build or repository link here when it’s ready to share.",
-    "image": "/images/project-game.png",
-    "stack": [
-      "C#",
-      "Unity",
-      "Gameplay"
+      "Calculator",
+      "History"
     ],
     "color": "sun",
-    "href": "https://github.com/Tejas-pandey1",
-    "linkLabel": "Explore my GitHub",
-    "featured": true
+    "href": "https://shadowknightrpg.itch.io/calculator-app",
+    "linkLabel": "View app",
+    "featured": false
+  },
+  {
+    "id": "analytics-manager",
+    "title": "Analytics Manager",
+    "category": "Data visualization · Web app",
+    "description": "A data-visualization tool concept that turns values into charts, including bar, pie, and doughnut charts, with options to compare datasets.",
+    "image": "/images/project-pulse.png",
+    "stack": [
+      "Data visualization",
+      "Charts",
+      "Web app"
+    ],
+    "color": "mint",
+    "href": "",
+    "linkLabel": "Live link needed",
+    "featured": false
+  },
+  {
+    "id": "lumen-alarm",
+    "title": "Lumen Smart Alarm",
+    "category": "Android app · Personal utility",
+    "description": "A customizable alarm app concept with alarm controls and support for personal ringtones from online sources or local files.",
+    "image": "/images/project-verde.png",
+    "stack": [
+      "Android",
+      "Alarms",
+      "Custom ringtones"
+    ],
+    "color": "sky",
+    "href": "https://shadowknightrpg.itch.io/alarm-app",
+    "linkLabel": "View app",
+    "featured": false
+  },
+  {
+    "id": "flipy-bird",
+    "title": "Flipy Bird",
+    "category": "Indie game · Arcade",
+    "description": "A playful twist on the classic tap-to-fly arcade formula, where the movement flips and players steer through pipes to score points.",
+    "image": "/images/project-game.png",
+    "stack": [
+      "Unity",
+      "C#",
+      "Arcade game"
+    ],
+    "color": "coral",
+    "href": "https://shadowknightrpg.itch.io/flipy-bird",
+    "linkLabel": "Play game",
+    "featured": false
+  },
+  {
+    "id": "getting-over-that",
+    "title": "Getting Over That",
+    "category": "3D game · Experiment",
+    "description": "A chaotic 3D climbing experiment built around an unusual mountain, improvised movement, and physics-driven surprises.",
+    "image": "/images/project-game.png",
+    "stack": [
+      "Unity",
+      "3D game",
+      "Physics"
+    ],
+    "color": "sun",
+    "href": "https://shadowknightrpg.itch.io/getting-over-that",
+    "linkLabel": "Play game",
+    "featured": false
   },
   {
     "id": "ai-web-scraper",
     "title": "AI Web Scraper",
-    "category": "Developer tool · Personal project",
-    "description": "A Python and Streamlit experiment using Groq to help extract useful page content into structured data.",
+    "category": "AI experiment · Developer tool",
+    "description": "An AI-assisted web-scraping experiment. The project description and public demo link will be refined once the live destination is ready.",
     "image": "/images/project-ai.png",
     "stack": [
-      "Python",
-      "Streamlit",
-      "Groq API",
-      "JSON"
+      "AI",
+      "Web scraping",
+      "Developer tool"
     ],
     "color": "mint",
-    "href": "https://github.com/Tejas-pandey1/ai-web-scraper",
-    "linkLabel": "View source",
+    "href": "",
+    "linkLabel": "Link coming soon",
+    "featured": false
+  },
+  {
+    "id": "design-showcase-01",
+    "title": "Web Design Showcase 01",
+    "category": "Website concept · Design showcase",
+    "description": "Design showcase entry — project details, thumbnail, and live link to be added.",
+    "image": "/images/project-atlas.png",
+    "stack": [
+      "Web design",
+      "Coming soon"
+    ],
+    "color": "sky",
+    "href": "",
+    "linkLabel": "Details coming soon",
+    "featured": false
+  },
+  {
+    "id": "design-showcase-02",
+    "title": "Web Design Showcase 02",
+    "category": "Website concept · Design showcase",
+    "description": "Design showcase entry — project details, thumbnail, and live link to be added.",
+    "image": "/images/project-pulse.png",
+    "stack": [
+      "Web design",
+      "Coming soon"
+    ],
+    "color": "coral",
+    "href": "",
+    "linkLabel": "Details coming soon",
+    "featured": false
+  },
+  {
+    "id": "design-showcase-03",
+    "title": "Web Design Showcase 03",
+    "category": "Website concept · Design showcase",
+    "description": "Design showcase entry — project details, thumbnail, and live link to be added.",
+    "image": "/images/project-verde.png",
+    "stack": [
+      "Web design",
+      "Coming soon"
+    ],
+    "color": "sun",
+    "href": "",
+    "linkLabel": "Details coming soon",
     "featured": false
   }
 ]
