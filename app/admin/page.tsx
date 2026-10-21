@@ -110,7 +110,11 @@ export default function AdminPage() {
               ))}
             </div>
             <label className="flex flex-col gap-1 text-sm font-bold">Description<textarea value={project.description} onChange={(e) => change(index, 'description', e.target.value)} rows={3} className="rounded-xl border-2 bg-background px-3 py-2 font-normal" /></label>
-            <label className="flex flex-col gap-1 text-sm font-bold">Tags / technologies (comma-separated)<input value={project.stack.join(', ')} onChange={(e) => change(index, 'stack', e.target.value)} className="rounded-xl border-2 bg-background px-3 py-2 font-normal" /></label>
+            <label className="flex flex-col gap-1 text-sm font-bold">Tags / technologies
+              <input value={project.stack.join(', ')} onChange={(e) => change(index, 'stack', e.target.value)} placeholder="Web design, AI integration, Responsive" className="rounded-xl border-2 bg-background px-3 py-2 font-normal" />
+              <span className="text-xs font-normal text-muted-foreground">Separate tags with commas. Preview:</span>
+              <span className="flex flex-wrap gap-2 pt-1">{project.stack.map((tag) => <span key={tag} className="rounded-full border px-2 py-1 text-xs">{tag}</span>)}</span>
+            </label>
             <label className="flex items-center gap-2 text-sm font-bold"><input type="checkbox" checked={project.featured} onChange={(e) => change(index, 'featured', e.target.checked)} /> Feature this project near the top</label>
             <label className="flex items-center gap-2 rounded-xl border-2 border-dashed p-3 text-sm font-bold"><input type="checkbox" checked={Boolean(project.inProgress)} onChange={(e) => setProjects((current) => current.map((item, i) => i === index ? { ...item, inProgress: e.target.checked } : item))} /> Show diagonal “In Progress” label on thumbnail</label>
           </section>
