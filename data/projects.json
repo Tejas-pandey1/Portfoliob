@@ -161,12 +161,11 @@
     "description": "A website design concept highlighting layout, visual style, and responsive presentation.",
     "image": "/images/project-atlas.png",
     "stack": [
-      "Web design",
-      "Coming soon"
+      "Web design"
     ],
     "color": "sky",
     "href": "",
-    "linkLabel": "Details coming soon",
+    "linkLabel": "Project preview",
     "featured": false,
     "inProgress": true
   },
@@ -183,7 +182,7 @@
     ],
     "color": "mint",
     "href": "",
-    "linkLabel": "Link coming soon",
+    "linkLabel": "Project preview",
     "featured": false,
     "inProgress": true
   },
@@ -211,12 +210,11 @@
     "description": "A website design concept highlighting layout, visual style, and responsive presentation.",
     "image": "/images/project-pulse.png",
     "stack": [
-      "Web design",
-      "Coming soon"
+      "Web design"
     ],
     "color": "coral",
     "href": "",
-    "linkLabel": "Details coming soon",
+    "linkLabel": "Project preview",
     "featured": false,
     "inProgress": true
   },
@@ -233,7 +231,7 @@
     ],
     "color": "mint",
     "href": "",
-    "linkLabel": "Live link needed",
+    "linkLabel": "Project preview",
     "featured": false,
     "inProgress": true
   },
@@ -261,12 +259,11 @@
     "description": "A website design concept highlighting layout, visual style, and responsive presentation.",
     "image": "/images/project-verde.png",
     "stack": [
-      "Web design",
-      "Coming soon"
+      "Web design"
     ],
     "color": "sun",
     "href": "",
-    "linkLabel": "Details coming soon",
+    "linkLabel": "Project preview",
     "featured": false,
     "inProgress": true
   }
