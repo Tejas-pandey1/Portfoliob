@@ -54,6 +54,7 @@ export async function POST(request: Request) {
       typeof project.category !== 'string' || typeof project.description !== 'string' ||
       typeof project.href !== 'string' || typeof project.image !== 'string' ||
       typeof project.linkLabel !== 'string' || typeof project.color !== 'string' ||
+      (project.inProgress !== undefined && typeof project.inProgress !== 'boolean') ||
       !Array.isArray(project.stack) || typeof project.featured !== 'boolean') {
       return NextResponse.json({ error: 'One or more projects are missing required fields.' }, { status: 400 })
     }
