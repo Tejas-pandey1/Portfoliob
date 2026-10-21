@@ -15,11 +15,12 @@ type Project = {
   href: string
   linkLabel: string
   featured: boolean
+  inProgress?: boolean
 }
 
 const blankProject: Project = {
   id: '', title: '', category: 'Personal project', description: '', image: '/images/project-ai.png',
-  stack: [], color: 'mint', href: '', linkLabel: 'View project', featured: false,
+  stack: [], color: 'mint', href: '', linkLabel: 'View project', featured: false, inProgress: false,
 }
 
 export default function AdminPage() {
@@ -67,6 +68,10 @@ export default function AdminPage() {
     finally { setBusy(false) }
   }
 
+  function setAllInProgress(value: boolean) {
+    setProjects((current) => current.map((project) => ({ ...project, inProgress: value })))
+  }
+
   function addProject() {
     setProjects((current) => [{ ...blankProject, id: `project-${Date.now()}`, featured: true }, ...current])
   }
@@ -91,8 +96,8 @@ export default function AdminPage() {
     <main className="min-h-screen bg-background px-4 py-10">
       <div className="mx-auto flex max-w-5xl flex-col gap-6">
         <header className="flex flex-wrap items-center justify-between gap-4">
-          <div><a href="/" className="text-sm font-bold text-muted-foreground">← View portfolio</a><h1 className="mt-2 font-display text-4xl font-extrabold">Project control room</h1><p className="mt-2 text-muted-foreground">Edit project details, screenshots, links, and featured cards, then save. Changes are stored on Netlify and shown to everyone.</p></div>
-          <button onClick={addProject} className="rounded-full border-2 bg-mint px-5 py-3 font-bold shadow-pop">+ Add project</button>
+          <div><a href="/" className="text-sm font-bold text-muted-foreground">← View portfolio</a><h1 className="mt-2 font-display text-4xl font-extrabold">Project control room</h1><p className="mt-2 text-muted-foreground">Edit project details, tags, screenshots, links, and status labels, then save.</p></div>
+          <div className="flex flex-wrap gap-2"><button onClick={() => setAllInProgress(true)} className="rounded-full border-2 px-4 py-2 text-sm font-bold">Mark all In Progress</button><button onClick={() => setAllInProgress(false)} className="rounded-full border-2 px-4 py-2 text-sm font-bold">Clear all labels</button><button onClick={addProject} className="rounded-full border-2 bg-mint px-5 py-3 font-bold shadow-pop">+ Add project</button></div>
         </header>
         {projects.map((project, index) => (
           <section key={project.id || index} className="flex flex-col gap-4 rounded-3xl border-2 bg-card p-5 shadow-pop">
@@ -105,8 +110,9 @@ export default function AdminPage() {
               ))}
             </div>
             <label className="flex flex-col gap-1 text-sm font-bold">Description<textarea value={project.description} onChange={(e) => change(index, 'description', e.target.value)} rows={3} className="rounded-xl border-2 bg-background px-3 py-2 font-normal" /></label>
-            <label className="flex flex-col gap-1 text-sm font-bold">Technologies (comma-separated)<input value={project.stack.join(', ')} onChange={(e) => change(index, 'stack', e.target.value)} className="rounded-xl border-2 bg-background px-3 py-2 font-normal" /></label>
-            <label className="flex items-center gap-2 text-sm font-bold"><input type="checkbox" checked={project.featured} onChange={(e) => change(index, 'featured', e.target.checked)} /> Show among the four featured projects</label>
+            <label className="flex flex-col gap-1 text-sm font-bold">Tags / technologies (comma-separated)<input value={project.stack.join(', ')} onChange={(e) => change(index, 'stack', e.target.value)} className="rounded-xl border-2 bg-background px-3 py-2 font-normal" /></label>
+            <label className="flex items-center gap-2 text-sm font-bold"><input type="checkbox" checked={project.featured} onChange={(e) => change(index, 'featured', e.target.checked)} /> Feature this project near the top</label>
+            <label className="flex items-center gap-2 rounded-xl border-2 border-dashed p-3 text-sm font-bold"><input type="checkbox" checked={Boolean(project.inProgress)} onChange={(e) => setProjects((current) => current.map((item, i) => i === index ? { ...item, inProgress: e.target.checked } : item))} /> Show diagonal “In Progress” label on thumbnail</label>
           </section>
         ))}
         {error && <p role="alert" className="rounded-xl bg-red-100 p-3 text-sm font-semibold text-red-800">{error}</p>}
