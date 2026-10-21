@@ -14,7 +14,8 @@
     "color": "mint",
     "href": "https://brine-ai.vercel.app/",
     "linkLabel": "View live site",
-    "featured": true
+    "featured": true,
+    "inProgress": false
   },
   {
     "id": "resident-management",
@@ -30,7 +31,8 @@
     "color": "sky",
     "href": "https://management-website-b6bi.onrender.com",
     "linkLabel": "View live site",
-    "featured": true
+    "featured": true,
+    "inProgress": false
   },
   {
     "id": "weather-ai",
@@ -46,7 +48,8 @@
     "color": "sun",
     "href": "https://shadowknightrpg.itch.io/weather-ai",
     "linkLabel": "View app",
-    "featured": true
+    "featured": true,
+    "inProgress": false
   },
   {
     "id": "corebound",
@@ -63,7 +66,8 @@
     "color": "coral",
     "href": "https://shadowknightrpg.itch.io/corebound",
     "linkLabel": "Play game",
-    "featured": true
+    "featured": true,
+    "inProgress": false
   },
   {
     "id": "dentist-concept",
@@ -79,7 +83,8 @@
     "color": "mint",
     "href": "https://dentist-concept-site.vercel.app/",
     "linkLabel": "View live site",
-    "featured": true
+    "featured": true,
+    "inProgress": false
   },
   {
     "id": "crab-ai",
@@ -95,71 +100,8 @@
     "color": "coral",
     "href": "https://crab-ai-thing.onrender.com",
     "linkLabel": "Try Crab AI",
-    "featured": false
-  },
-  {
-    "id": "utility-website",
-    "title": "Everyday Utility Toolkit",
-    "category": "Web application · Utilities",
-    "description": "A collection of handy everyday tools, including currency conversion, length conversion, and many other quick utilities in one place.",
-    "image": "/images/project-atlas.png",
-    "stack": [
-      "Web app",
-      "JavaScript",
-      "Utility tools"
-    ],
-    "color": "sky",
-    "href": "https://utilitywebsitebyshadow.netlify.app/",
-    "linkLabel": "Open toolkit",
-    "featured": false
-  },
-  {
-    "id": "calculator-app",
-    "title": "Scientific Calculator",
-    "category": "Android app · Productivity",
-    "description": "A scientific calculator app with calculation history, designed to make everyday and more advanced calculations easy to revisit.",
-    "image": "/images/project-ledger.png",
-    "stack": [
-      "Android",
-      "Calculator",
-      "History"
-    ],
-    "color": "sun",
-    "href": "https://shadowknightrpg.itch.io/calculator-app",
-    "linkLabel": "View app",
-    "featured": false
-  },
-  {
-    "id": "analytics-manager",
-    "title": "Analytics Manager",
-    "category": "Data visualization · Web app",
-    "description": "A data-visualization tool concept that turns values into charts, including bar, pie, and doughnut charts, with options to compare datasets.",
-    "image": "/images/project-pulse.png",
-    "stack": [
-      "Data visualization",
-      "Charts",
-      "Web app"
-    ],
-    "color": "mint",
-    "href": "",
-    "linkLabel": "Live link needed",
-    "featured": false
-  },
-  {
-    "id": "lumen-alarm",
-    "title": "Lumen Smart Alarm",
-    "category": "Android app · Personal utility",
-    "description": "A customizable alarm app concept with alarm controls and support for personal ringtones from online sources or local files.",
-    "image": "/images/project-verde.png",
-    "stack": [
-      "Android",
-      "Alarms",
-      "Custom ringtones"
-    ],
-    "color": "sky",
-    "href": "https://shadowknightrpg.itch.io/alarm-app",
-    "linkLabel": "View app",
-    "featured": false
+    "featured": false,
+    "inProgress": false
   },
   {
     "id": "flipy-bird",
@@ -175,7 +117,74 @@
     "color": "coral",
     "href": "https://shadowknightrpg.itch.io/flipy-bird",
     "linkLabel": "Play game",
-    "featured": false
+    "featured": false,
+    "inProgress": false
+  },
+  {
+    "id": "calculator-app",
+    "title": "Scientific Calculator",
+    "category": "Android app · Productivity",
+    "description": "A scientific calculator app with calculation history, designed to make everyday and more advanced calculations easy to revisit.",
+    "image": "/images/project-ledger.png",
+    "stack": [
+      "Android",
+      "Calculator",
+      "History"
+    ],
+    "color": "sun",
+    "href": "https://shadowknightrpg.itch.io/calculator-app",
+    "linkLabel": "View app",
+    "featured": false,
+    "inProgress": false
+  },
+  {
+    "id": "utility-website",
+    "title": "Everyday Utility Toolkit",
+    "category": "Web application · Utilities",
+    "description": "A collection of handy everyday tools, including currency conversion, length conversion, and many other quick utilities in one place.",
+    "image": "/images/project-atlas.png",
+    "stack": [
+      "Web app",
+      "JavaScript",
+      "Utility tools"
+    ],
+    "color": "sky",
+    "href": "https://utilitywebsitebyshadow.netlify.app/",
+    "linkLabel": "Open toolkit",
+    "featured": false,
+    "inProgress": false
+  },
+  {
+    "id": "design-showcase-01",
+    "title": "Web Design Showcase 01",
+    "category": "Website concept · Design showcase",
+    "description": "A website design concept highlighting layout, visual style, and responsive presentation.",
+    "image": "/images/project-atlas.png",
+    "stack": [
+      "Web design"
+    ],
+    "color": "sky",
+    "href": "",
+    "linkLabel": "Project preview",
+    "featured": false,
+    "inProgress": true
+  },
+  {
+    "id": "ai-web-scraper",
+    "title": "AI Web Scraper",
+    "category": "AI experiment · Developer tool",
+    "description": "An AI-assisted web-scraping experiment exploring ways to collect and organize useful information from websites.",
+    "image": "/images/project-ai.png",
+    "stack": [
+      "AI",
+      "Web scraping",
+      "Developer tool"
+    ],
+    "color": "mint",
+    "href": "",
+    "linkLabel": "Project preview",
+    "featured": false,
+    "inProgress": true
   },
   {
     "id": "getting-over-that",
@@ -191,67 +200,71 @@
     "color": "sun",
     "href": "https://shadowknightrpg.itch.io/getting-over-that",
     "linkLabel": "Play game",
-    "featured": false
-  },
-  {
-    "id": "ai-web-scraper",
-    "title": "AI Web Scraper",
-    "category": "AI experiment · Developer tool",
-    "description": "An AI-assisted web-scraping experiment. The project description and public demo link will be refined once the live destination is ready.",
-    "image": "/images/project-ai.png",
-    "stack": [
-      "AI",
-      "Web scraping",
-      "Developer tool"
-    ],
-    "color": "mint",
-    "href": "",
-    "linkLabel": "Link coming soon",
-    "featured": false
-  },
-  {
-    "id": "design-showcase-01",
-    "title": "Web Design Showcase 01",
-    "category": "Website concept · Design showcase",
-    "description": "Design showcase entry — project details, thumbnail, and live link to be added.",
-    "image": "/images/project-atlas.png",
-    "stack": [
-      "Web design",
-      "Coming soon"
-    ],
-    "color": "sky",
-    "href": "",
-    "linkLabel": "Details coming soon",
-    "featured": false
+    "featured": false,
+    "inProgress": false
   },
   {
     "id": "design-showcase-02",
     "title": "Web Design Showcase 02",
     "category": "Website concept · Design showcase",
-    "description": "Design showcase entry — project details, thumbnail, and live link to be added.",
+    "description": "A website design concept highlighting layout, visual style, and responsive presentation.",
     "image": "/images/project-pulse.png",
     "stack": [
-      "Web design",
-      "Coming soon"
+      "Web design"
     ],
     "color": "coral",
     "href": "",
-    "linkLabel": "Details coming soon",
-    "featured": false
+    "linkLabel": "Project preview",
+    "featured": false,
+    "inProgress": true
+  },
+  {
+    "id": "analytics-manager",
+    "title": "Analytics Manager",
+    "category": "Data visualization · Web app",
+    "description": "A data-visualization tool that turns values into bar, pie, and doughnut charts, with options to compare datasets.",
+    "image": "/images/project-pulse.png",
+    "stack": [
+      "Data visualization",
+      "Charts",
+      "Web app"
+    ],
+    "color": "mint",
+    "href": "",
+    "linkLabel": "Project preview",
+    "featured": false,
+    "inProgress": true
+  },
+  {
+    "id": "lumen-alarm",
+    "title": "Lumen Smart Alarm",
+    "category": "Android app · Personal utility",
+    "description": "A customizable alarm app concept with alarm controls and support for personal ringtones from online sources or local files.",
+    "image": "/images/project-verde.png",
+    "stack": [
+      "Android",
+      "Alarms",
+      "Custom ringtones"
+    ],
+    "color": "sky",
+    "href": "https://shadowknightrpg.itch.io/alarm-app",
+    "linkLabel": "View app",
+    "featured": false,
+    "inProgress": false
   },
   {
     "id": "design-showcase-03",
     "title": "Web Design Showcase 03",
     "category": "Website concept · Design showcase",
-    "description": "Design showcase entry — project details, thumbnail, and live link to be added.",
+    "description": "A website design concept highlighting layout, visual style, and responsive presentation.",
     "image": "/images/project-verde.png",
     "stack": [
-      "Web design",
-      "Coming soon"
+      "Web design"
     ],
     "color": "sun",
     "href": "",
-    "linkLabel": "Details coming soon",
-    "featured": false
+    "linkLabel": "Project preview",
+    "featured": false,
+    "inProgress": true
   }
 ]

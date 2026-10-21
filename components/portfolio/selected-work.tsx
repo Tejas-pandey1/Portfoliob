@@ -38,7 +38,7 @@ export function SelectedWork() {
           eyebrow="The project shelf"
           tagClassName="bg-coral"
           title={<>Little ideas, <span className="text-coral">real builds.</span></>}
-          description="A collection of websites, apps, AI experiments, and games. Five featured projects lead the way; the rest are one click away."
+          description="A mix of websites, apps, AI experiments, data tools, and games."
         />
         <ul className="mt-14 grid gap-10 md:grid-cols-2">
           {visibleProjects.map((project, i) => (
@@ -48,11 +48,13 @@ export function SelectedWork() {
                   <a href={project.href} target="_blank" rel="noreferrer" aria-label={`${project.linkLabel}: ${project.title}`} className={cn('relative block overflow-hidden rounded-3xl border-2 p-4 shadow-pop transition-transform group-hover:-translate-y-1', colors[project.color] ?? 'bg-card')}>
                     <Image src={project.image} alt={`Preview for ${project.title}`} width={1200} height={750} unoptimized className="aspect-[16/10] w-full rounded-2xl border-2 object-cover transition-transform duration-500 group-hover:scale-[1.02]" />
                     <span className="absolute top-7 right-7 rotate-2 rounded-full border-2 bg-card px-3 py-1 text-xs font-bold shadow-pop-sm">{project.linkLabel} ↗</span>
+                    {project.inProgress && <span className="absolute -left-10 top-10 -rotate-45 border-y-2 border-foreground bg-sun px-12 py-2 text-xs font-extrabold uppercase tracking-widest shadow-pop-sm">In Progress</span>}
                   </a>
                 ) : (
                   <div className={cn('relative block overflow-hidden rounded-3xl border-2 p-4 shadow-pop', colors[project.color] ?? 'bg-card')}>
                     <Image src={project.image} alt={`Temporary preview for ${project.title}`} width={1200} height={750} unoptimized className="aspect-[16/10] w-full rounded-2xl border-2 object-cover" />
                     <span className="absolute top-7 right-7 rotate-2 rounded-full border-2 bg-card px-3 py-1 text-xs font-bold shadow-pop-sm">{project.linkLabel}</span>
+                    {project.inProgress && <span className="absolute -left-10 top-10 -rotate-45 border-y-2 border-foreground bg-sun px-12 py-2 text-xs font-extrabold uppercase tracking-widest shadow-pop-sm">In Progress</span>}
                   </div>
                 )}
                 <div className="flex items-start justify-between gap-4">
@@ -77,7 +79,7 @@ export function SelectedWork() {
         {sortedProjects.length > 5 && (
           <div className="mt-14 border-y border-foreground/15">
             <button type="button" onClick={() => setShowAll(!showAll)} className="flex w-full items-center justify-between py-4 text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground">
-              <span>{showAll ? 'Show fewer projects' : `See more projects (${sortedProjects.length - 5})`}</span>
+              <span>{showAll ? 'Show fewer projects' : 'See more projects'}</span>
               <ArrowDown className={cn('size-4 transition-transform', showAll && 'rotate-180')} aria-hidden="true" />
             </button>
           </div>
