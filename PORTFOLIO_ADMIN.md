@@ -1,6 +1,6 @@
 # Private portfolio project editor
 
-The portfolio's project cards are stored in `data/projects.json`. The five entries marked `"featured": true` appear first on the homepage; visitors can use **See more** to reveal the remaining projects.
+The portfolio's project cards are stored in `data/projects.json`. Entries marked `"featured": true` appear first on the homepage; visitors can use **See more projects** to expand the full project shelf. The editor includes a per-project **In Progress** thumbnail label and bulk controls to apply or clear that label across all projects.
 
 ## Enable the private editor
 
