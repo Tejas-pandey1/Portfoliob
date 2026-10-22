@@ -156,18 +156,20 @@
   },
   {
     "id": "design-showcase-01",
-    "title": "Web Design Showcase 01",
-    "category": "Website concept · Design showcase",
-    "description": "A website design concept highlighting layout, visual style, and responsive presentation.",
+    "title": "Concept One — Modern Landing Page",
+    "category": "Website concept · Landing page",
+    "description": "A standalone website concept built to showcase a clear landing-page structure, considered visual hierarchy, and a polished first impression.",
     "image": "/images/project-atlas.png",
     "stack": [
-      "Web design"
+      "Web design",
+      "Landing page",
+      "UI/UX"
     ],
     "color": "sky",
-    "href": "",
-    "linkLabel": "Project preview",
+    "href": "https://concept-site.pages.dev/",
+    "linkLabel": "View live site",
     "featured": false,
-    "inProgress": true
+    "inProgress": false
   },
   {
     "id": "ai-web-scraper",
@@ -205,24 +207,26 @@
   },
   {
     "id": "design-showcase-02",
-    "title": "Web Design Showcase 02",
-    "category": "Website concept · Design showcase",
-    "description": "A website design concept highlighting layout, visual style, and responsive presentation.",
+    "title": "Concept Two — Website Design Study",
+    "category": "Website concept · Visual design",
+    "description": "A second design direction exploring a distinct page layout and visual presentation, demonstrating flexibility across different website concepts.",
     "image": "/images/project-pulse.png",
     "stack": [
-      "Web design"
+      "Web design",
+      "Layout design",
+      "UI/UX"
     ],
     "color": "coral",
-    "href": "",
-    "linkLabel": "Project preview",
+    "href": "https://concept-site.pages.dev/index2",
+    "linkLabel": "View live site",
     "featured": false,
-    "inProgress": true
+    "inProgress": false
   },
   {
     "id": "analytics-manager",
     "title": "Analytics Manager",
     "category": "Data visualization · Web app",
-    "description": "A data-visualization tool that turns values into bar, pie, and doughnut charts, with options to compare datasets.",
+    "description": "A browser-based analytics tool for turning datasets into clear bar, pie, and doughnut charts, with options to compare information visually.",
     "image": "/images/project-pulse.png",
     "stack": [
       "Data visualization",
@@ -230,10 +234,10 @@
       "Web app"
     ],
     "color": "mint",
-    "href": "",
-    "linkLabel": "Project preview",
+    "href": "https://analyticweb.netlify.app/",
+    "linkLabel": "Open live app",
     "featured": false,
-    "inProgress": true
+    "inProgress": false
   },
   {
     "id": "lumen-alarm",
@@ -254,17 +258,19 @@
   },
   {
     "id": "design-showcase-03",
-    "title": "Web Design Showcase 03",
-    "category": "Website concept · Design showcase",
-    "description": "A website design concept highlighting layout, visual style, and responsive presentation.",
+    "title": "Concept Three — Digital Experience",
+    "category": "Website concept · Front-end design",
+    "description": "A third website concept focused on presenting content through a thoughtful interface and a cohesive visual style.",
     "image": "/images/project-verde.png",
     "stack": [
-      "Web design"
+      "Web design",
+      "Front-end",
+      "Responsive design"
     ],
     "color": "sun",
-    "href": "",
-    "linkLabel": "Project preview",
+    "href": "https://concept-site.pages.dev/index3",
+    "linkLabel": "View live site",
     "featured": false,
-    "inProgress": true
+    "inProgress": false
   }
 ]
