@@ -1,4 +1,4 @@
-import { getStore } from '@netlify/blobs'
+import { list, put } from '@vercel/blob'
 import { createHmac, timingSafeEqual } from 'node:crypto'
 import { cookies } from 'next/headers'
 import { NextResponse } from 'next/server'
@@ -6,7 +6,7 @@ import { NextResponse } from 'next/server'
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
 
-const store = () => getStore('shadow-portfolio')
+const key = 'portfolio/site-settings.json'
 const defaults = {
   mascot: '',
   contactButtons: [
@@ -24,13 +24,21 @@ async function admin() {
   const a = Buffer.from(token(secret)), b = Buffer.from(value)
   return a.length === b.length && timingSafeEqual(a, b)
 }
+async function readSettings() {
+  const { blobs } = await list({ prefix: key, limit: 10 })
+  const blob = blobs.find((item) => item.pathname === key)
+  if (!blob) return defaults
+  const response = await fetch(blob.url, { cache: 'no-store' })
+  if (!response.ok) throw new Error('Could not read saved site settings.')
+  const saved: unknown = await response.json()
+  if (!saved || typeof saved !== 'object' || Array.isArray(saved)) return defaults
+  return { ...defaults, ...(saved as Record<string, unknown>) }
+}
 export async function GET(request: Request) {
-  let saved: Record<string, unknown> = {}
+  let settings = defaults
   try {
-    const value = await store().get('site-settings', { type: 'json' }) as Record<string, unknown> | null
-    if (value && typeof value === 'object') saved = value
+    settings = await readSettings()
   } catch {}
-  const settings = { ...defaults, ...saved }
   const section = new URL(request.url).searchParams.get('section')
   const result = section === 'contact' ? { contactButtons: settings.contactButtons }
     : section === 'mascot' ? { mascot: settings.mascot }
@@ -51,9 +59,15 @@ export async function POST(request: Request) {
   }
   if (mascot && !mascot.startsWith('data:image/')) return NextResponse.json({ error: 'Upload a supported image file.' }, { status: 400 })
   try {
-    await store().setJSON('site-settings', { mascot, contactButtons: buttons })
-    return NextResponse.json({ ok: true, message: 'Site settings saved. Your changes are live.' }, { headers: { 'Cache-Control': 'no-store' } })
+    await put(key, JSON.stringify({ mascot, contactButtons: buttons }), {
+      access: 'public',
+      allowOverwrite: true,
+      addRandomSuffix: false,
+      contentType: 'application/json; charset=utf-8',
+      cacheControlMaxAge: 60,
+    })
+    return NextResponse.json({ ok: true, message: 'Site settings saved to Vercel Blob. Your changes are live.' }, { headers: { 'Cache-Control': 'no-store' } })
   } catch {
-    return NextResponse.json({ error: 'Netlify storage was unavailable. Try again after confirming this site is deployed on Netlify.' }, { status: 503 })
+    return NextResponse.json({ error: 'Could not save site settings to Vercel. Open your Vercel project, go to Storage, create a Blob store, and connect it to this project so BLOB_READ_WRITE_TOKEN is added. Then redeploy and save again.' }, { status: 503 })
   }
 }
