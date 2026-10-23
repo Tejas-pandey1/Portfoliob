@@ -5,7 +5,7 @@ import { useMemo, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import {
   ArrowDown, ArrowUp, Check, ChevronDown, ChevronUp, GripVertical, ImagePlus, Link2,
-  MessageCircle, BriefcaseBusiness, Globe, Github, Instagram, Mail, MessageSquare,
+  MessageCircle, BriefcaseBusiness, Globe, Code2, Camera, Mail, MessageSquare,
   Plus, RotateCcw, Save, Search, Settings2, Trash2, Upload, X,
 } from 'lucide-react'
 import initialProjects from '@/data/projects.json'
@@ -155,8 +155,8 @@ export default function AdminPage() {
       case 'MessageCircle': return <MessageCircle {...props} />
       case 'BriefcaseBusiness': return <BriefcaseBusiness {...props} />
       case 'Globe': return <Globe {...props} />
-      case 'Github': return <Github {...props} />
-      case 'Instagram': return <Instagram {...props} />
+      case 'Github': return <Code2 {...props} />
+      case 'Instagram': return <Camera {...props} />
       case 'Mail': return <Mail {...props} />
       case 'MessageSquare': return <MessageSquare {...props} />
       default: return <Link2 {...props} />
