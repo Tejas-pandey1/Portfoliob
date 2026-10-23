@@ -1,4 +1,4 @@
-import { getStore } from '@netlify/blobs'
+import { list, put } from '@vercel/blob'
 import { createHmac, timingSafeEqual } from 'node:crypto'
 import { cookies } from 'next/headers'
 import { NextResponse } from 'next/server'
@@ -7,8 +7,7 @@ import initialProjects from '@/data/projects.json'
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
 
-const store = () => getStore('shadow-portfolio')
-const key = 'projects'
+const key = 'portfolio/projects.json'
 
 function expectedSession(secret: string) {
   return createHmac('sha256', secret).update('shadow-portfolio-admin').digest('hex')
@@ -25,14 +24,24 @@ async function isAdmin() {
   return expected.length === supplied.length && timingSafeEqual(expected, supplied)
 }
 
+async function readProjects() {
+  const { blobs } = await list({ prefix: key, limit: 10 })
+  const blob = blobs.find((item) => item.pathname === key)
+  if (!blob) return initialProjects
+  const response = await fetch(blob.url, { cache: 'no-store' })
+  if (!response.ok) throw new Error('Could not read saved projects.')
+  const projects: unknown = await response.json()
+  return Array.isArray(projects) ? projects : initialProjects
+}
+
 export async function GET() {
   try {
-    const projects = await store().get(key, { type: 'json' }) as unknown
-    return NextResponse.json(Array.isArray(projects) ? projects : initialProjects, {
+    const projects = await readProjects()
+    return NextResponse.json(projects, {
       headers: { 'Cache-Control': 'no-store, max-age=0' },
     })
   } catch {
-    // The bundled JSON keeps local previews usable; Netlify Blobs is used on the deployed site.
+    // Bundled data keeps the portfolio readable before Vercel Blob is connected.
     return NextResponse.json(initialProjects, {
       headers: { 'Cache-Control': 'no-store, max-age=0' },
     })
@@ -66,14 +75,20 @@ export async function POST(request: Request) {
   }
 
   try {
-    await store().setJSON(key, projects)
+    await put(key, JSON.stringify(projects), {
+      access: 'public',
+      allowOverwrite: true,
+      addRandomSuffix: false,
+      contentType: 'application/json; charset=utf-8',
+      cacheControlMaxAge: 60,
+    })
     return NextResponse.json({
       ok: true,
-      message: 'Saved to Netlify. Your updated projects are now available to everyone.',
+      message: 'Saved to Vercel Blob. Your updated projects are now available to everyone.',
     }, { headers: { 'Cache-Control': 'no-store' } })
   } catch {
     return NextResponse.json({
-      error: 'Netlify storage was unavailable. Make sure this site is deployed on Netlify, then try again.',
+      error: 'Could not save projects to Vercel. In your Vercel project, open Storage, create a Blob store, and connect it to this project so BLOB_READ_WRITE_TOKEN is added. Then redeploy and save again.',
     }, { status: 503 })
   }
 }
