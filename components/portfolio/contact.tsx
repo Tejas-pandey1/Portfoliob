@@ -25,7 +25,7 @@ function ContactIcon({ name }: { name: string }) {
 export function Contact() {
   const [links, setLinks] = useState<ContactButton[]>(defaults)
   useEffect(() => {
-    fetch('/api/admin/settings', { cache: 'no-store' }).then(response => response.ok ? response.json() : Promise.reject())
+    fetch('/api/admin/settings?section=contact', { cache: 'no-store' }).then(response => response.ok ? response.json() : Promise.reject())
       .then(data => { if (Array.isArray(data.contactButtons)) setLinks(data.contactButtons) }).catch(() => {})
   }, [])
   return (
