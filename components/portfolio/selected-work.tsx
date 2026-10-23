@@ -7,7 +7,7 @@ import { SectionHeading } from './section-heading'
 import { cn } from '@/lib/utils'
 import projectsData from '@/data/projects.json'
 
-type Project = (typeof projectsData)[number]
+type Project = (typeof projectsData)[number] & { order?: number }
 const colors: Record<string, string> = {
   mint: 'bg-mint',
   sky: 'bg-sky',
@@ -27,7 +27,11 @@ export function SelectedWork() {
       .catch(() => {})
   }, [])
 
-  const sortedProjects = [...projects].sort((a, b) => Number(Boolean(b.featured)) - Number(Boolean(a.featured)))
+  const sortedProjects = [...projects].sort((a, b) => {
+    const aOrder = typeof a.order === 'number' ? a.order : projects.indexOf(a) + 1
+    const bOrder = typeof b.order === 'number' ? b.order : projects.indexOf(b) + 1
+    return aOrder - bOrder
+  })
   const visibleProjects = showAll ? sortedProjects : sortedProjects.slice(0, 5)
 
   return (
