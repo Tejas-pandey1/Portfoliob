@@ -24,13 +24,18 @@ async function admin() {
   const a = Buffer.from(token(secret)), b = Buffer.from(value)
   return a.length === b.length && timingSafeEqual(a, b)
 }
-export async function GET() {
+export async function GET(request: Request) {
+  let saved: Record<string, unknown> = {}
   try {
-    const saved = await store().get('site-settings', { type: 'json' }) as Record<string, unknown> | null
-    return NextResponse.json({ ...defaults, ...(saved && typeof saved === 'object' ? saved : {}) }, { headers: { 'Cache-Control': 'no-store, max-age=0' } })
-  } catch {
-    return NextResponse.json(defaults, { headers: { 'Cache-Control': 'no-store, max-age=0' } })
-  }
+    const value = await store().get('site-settings', { type: 'json' }) as Record<string, unknown> | null
+    if (value && typeof value === 'object') saved = value
+  } catch {}
+  const settings = { ...defaults, ...saved }
+  const section = new URL(request.url).searchParams.get('section')
+  const result = section === 'contact' ? { contactButtons: settings.contactButtons }
+    : section === 'mascot' ? { mascot: settings.mascot }
+    : settings
+  return NextResponse.json(result, { headers: { 'Cache-Control': 'no-store, max-age=0' } })
 }
 export async function POST(request: Request) {
   if (!(await admin())) return NextResponse.json({ error: 'Please sign in to edit site settings.' }, { status: 401 })
