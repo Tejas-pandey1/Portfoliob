@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { ArrowUpRight, MessageCircle, BriefcaseBusiness, Globe, Github, Instagram, Mail, MessageSquare, Link2 } from 'lucide-react'
+import { ArrowUpRight, MessageCircle, BriefcaseBusiness, Globe, Code2, Camera, Mail, MessageSquare, Link2 } from 'lucide-react'
 
 type ContactButton = { id: string; label: string; detail?: string; href: string; icon: string; color: string; enabled: boolean }
 const defaults: ContactButton[] = [
@@ -15,8 +15,8 @@ function ContactIcon({ name }: { name: string }) {
     case 'MessageCircle': return <MessageCircle {...props} />
     case 'BriefcaseBusiness': return <BriefcaseBusiness {...props} />
     case 'Globe': return <Globe {...props} />
-    case 'Github': return <Github {...props} />
-    case 'Instagram': return <Instagram {...props} />
+    case 'Github': return <Code2 {...props} />
+    case 'Instagram': return <Camera {...props} />
     case 'Mail': return <Mail {...props} />
     case 'MessageSquare': return <MessageSquare {...props} />
     default: return <Link2 {...props} />
