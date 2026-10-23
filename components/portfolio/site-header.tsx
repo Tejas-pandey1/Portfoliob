@@ -13,7 +13,7 @@ const navItems = [
 export function SiteHeader() {
   const [mascot, setMascot] = useState('')
   useEffect(() => {
-    fetch('/api/admin/settings', { cache: 'no-store' })
+    fetch('/api/admin/settings?section=mascot', { cache: 'no-store' })
       .then(response => response.ok ? response.json() : Promise.reject())
       .then(data => { if (typeof data.mascot === 'string') setMascot(data.mascot) })
       .catch(() => {})
