@@ -40,6 +40,8 @@ function safeId(value: string) {
 export default function AdminPage() {
   const router = useRouter()
   const mascotInput = useRef<HTMLInputElement>(null)
+  const [tagDrafts, setTagDrafts] = useState<Record<string, string>>({})
+  const [uploadingImages, setUploadingImages] = useState<Record<string, boolean>>({})
   const [signedIn, setSignedIn] = useState(false)
   const [password, setPassword] = useState('')
   const [projects, setProjects] = useState<Project[]>(normalizeProjects(initialProjects as Project[]))
@@ -122,6 +124,45 @@ export default function AdminPage() {
     reader.onload = () => { if (typeof reader.result === 'string') setSettings(current => ({ ...current, mascot: reader.result as string })); setError(''); setMessage('Mascot preview updated. Save changes to publish it.') }
     reader.onerror = () => setError('Could not read that image. Try another file.')
     reader.readAsDataURL(file)
+  }
+  async function uploadProjectImage(projectId: string, file?: File) {
+    if (!file) return
+    if (!['image/png', 'image/jpeg', 'image/webp', 'image/gif', 'image/avif'].includes(file.type)) {
+      setError('Use a PNG, JPG, WebP, GIF, or AVIF image.')
+      return
+    }
+    if (file.size > 4 * 1024 * 1024) {
+      setError('Choose an image under 4 MB so Vercel can upload it reliably.')
+      return
+    }
+    setUploadingImages(current => ({ ...current, [projectId]: true }))
+    setError('')
+    setMessage('')
+    try {
+      const form = new FormData()
+      form.append('file', file)
+      const response = await fetch('/api/admin/project-image', { method: 'POST', body: form })
+      const data = await response.json()
+      if (!response.ok || typeof data.url !== 'string') throw new Error(data.error || 'Image upload failed.')
+      updateProject(projectId, 'image', data.url)
+      setMessage('Image uploaded to Vercel Blob. Save changes to publish it on your portfolio.')
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Image upload failed.')
+    } finally {
+      setUploadingImages(current => ({ ...current, [projectId]: false }))
+    }
+  }
+  function addProjectTag(projectId: string) {
+    const tag = (tagDrafts[projectId] || '').trim().replace(/,+$/g, '')
+    if (!tag) return
+    setProjects(current => current.map(project => {
+      if (project.id !== projectId || project.stack.some(item => item.toLowerCase() === tag.toLowerCase())) return project
+      return { ...project, stack: [...project.stack, tag].slice(0, 30) }
+    }))
+    setTagDrafts(current => ({ ...current, [projectId]: '' }))
+  }
+  function removeProjectTag(projectId: string, tagToRemove: string) {
+    setProjects(current => current.map(project => project.id === projectId ? { ...project, stack: project.stack.filter(tag => tag !== tagToRemove) } : project))
   }
   async function save() {
     setBusy(true); setError(''); setMessage('')
@@ -218,10 +259,17 @@ export default function AdminPage() {
               {expanded && <div className="border-t-2 bg-background/70 p-4 sm:p-6">
                 <div className="mb-5 flex flex-wrap items-center justify-between gap-3"><div><h4 className="font-display text-xl font-extrabold">Project details</h4><p className="text-sm text-muted-foreground">Keep it clear, specific, and honest.</p></div><button onClick={() => { if (window.confirm(`Remove “${project.title}” from the portfolio? This takes effect after saving.`)) { setProjects(current => current.filter(item => item.id !== project.id).map((item, i) => ({...item, order:i+1}))); setExpandedId(null) } }} className="inline-flex items-center gap-2 rounded-full border-2 border-red-300 px-3 py-2 text-sm font-bold text-red-700 hover:bg-red-50"><Trash2 className="size-4" /> Remove</button></div>
                 <div className="grid gap-4 sm:grid-cols-2">
-                  {([['title','Project title'],['category','Category / type'],['href','Project URL'],['image','Screenshot path or image URL'],['linkLabel','Button label'],['color','Card colour'],['id','Unique ID']] as [keyof Project,string][]).map(([key,label]) => <label key={key} className="flex flex-col gap-1.5 text-sm font-bold">{label}{key === 'color' ? <select value={String(project.color)} onChange={event => updateProject(project.id,key,event.target.value)} className="rounded-xl border-2 bg-card px-3 py-2.5 font-normal">{colorChoices.map(color => <option key={color} value={color}>{color}</option>)}</select> : <input value={String(project[key] ?? '')} onChange={event => updateProject(project.id,key,event.target.value)} className="min-w-0 rounded-xl border-2 bg-card px-3 py-2.5 font-normal" />}</label>)}
+                  {([['title','Project title'],['category','Category / type'],['href','Project URL'],['image','Image URL or path'],['linkLabel','Button label'],['color','Card colour'],['id','Unique ID']] as [keyof Project,string][]).map(([key,label]) => <label key={key} className="flex flex-col gap-1.5 text-sm font-bold">{label}{key === 'color' ? <select value={String(project.color)} onChange={event => updateProject(project.id,key,event.target.value)} className="rounded-xl border-2 bg-card px-3 py-2.5 font-normal">{colorChoices.map(color => <option key={color} value={color}>{color}</option>)}</select> : <input value={String(project[key] ?? '')} onChange={event => updateProject(project.id,key,event.target.value)} placeholder={key === 'image' ? 'https://… or /images/your-screenshot.png' : key === 'href' ? 'https://…' : ''} className="min-w-0 rounded-xl border-2 bg-card px-3 py-2.5 font-normal" />}</label>)}
+                <div className="sm:col-span-2 rounded-2xl border-2 border-dashed bg-card p-4">
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
+                    <div className="flex-1"><p className="font-bold">Project screenshot</p><p className="text-xs font-normal text-muted-foreground">Upload from your device or paste any direct image URL above. PNG, JPG, WebP, GIF or AVIF · up to 4 MB.</p></div>
+                    <label className={`inline-flex cursor-pointer items-center justify-center gap-2 rounded-full border-2 bg-sun px-4 py-2.5 text-sm font-bold ${uploadingImages[project.id] ? 'pointer-events-none opacity-60' : ''}`}><Upload className="size-4" />{uploadingImages[project.id] ? 'Uploading…' : 'Upload image'}<input type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/avif" className="hidden" disabled={Boolean(uploadingImages[project.id])} onChange={event => { void uploadProjectImage(project.id, event.target.files?.[0]); event.currentTarget.value = '' }} /></label>
+                  </div>
+                  {project.image && <div className="mt-3 flex items-center gap-3"><img src={project.image} alt={`Preview for ${project.title || 'project'}`} className="h-24 w-40 rounded-xl border-2 object-cover" /><span className="min-w-0 break-all text-xs font-normal text-muted-foreground">{project.image}</span></div>}
+                </div>
                 </div>
                 <label className="mt-4 flex flex-col gap-1.5 text-sm font-bold">Description<textarea value={project.description} onChange={event => updateProject(project.id,'description',event.target.value)} rows={3} maxLength={2000} className="rounded-xl border-2 bg-card px-3 py-2.5 font-normal" /><span className="text-right text-xs font-normal text-muted-foreground">{project.description.length}/2000</span></label>
-                <label className="mt-3 flex flex-col gap-1.5 text-sm font-bold">Tags / technologies<input value={project.stack.join(', ')} onChange={event => updateProject(project.id,'stack',event.target.value)} placeholder="Web design, AI integration, Responsive" className="rounded-xl border-2 bg-card px-3 py-2.5 font-normal" /><span className="flex flex-wrap gap-2 pt-1">{project.stack.map(tag => <span key={tag} className="rounded-full border-2 bg-card px-2.5 py-1 text-xs">{tag}</span>)}</span></label>
+                <div className="mt-3 flex flex-col gap-2 text-sm font-bold"><span>Tags / technologies</span><div className="flex gap-2"><input value={tagDrafts[project.id] ?? ''} onChange={event => setTagDrafts(current => ({ ...current, [project.id]: event.target.value }))} onKeyDown={event => { if (event.key === 'Enter') { event.preventDefault(); addProjectTag(project.id) } }} placeholder="Type one tag, e.g. React" className="min-w-0 flex-1 rounded-xl border-2 bg-card px-3 py-2.5 font-normal" /><button type="button" onClick={() => addProjectTag(project.id)} className="rounded-xl border-2 bg-mint px-4 py-2 font-bold">Add tag</button></div><span className="text-xs font-normal text-muted-foreground">Add each tag separately with Enter or Add tag. No commas needed.</span><span className="flex flex-wrap gap-2 pt-1">{project.stack.map(tag => <span key={tag} className="inline-flex items-center gap-1 rounded-full border-2 bg-card py-1 pl-2.5 pr-1 text-xs">{tag}<button type="button" onClick={() => removeProjectTag(project.id, tag)} aria-label={`Remove ${tag} tag`} className="rounded-full p-1 hover:bg-red-100 hover:text-red-700"><X className="size-3" /></button></span>)}</span></div>
                 <div className="mt-4 flex flex-wrap gap-3"><label className="flex items-center gap-2 rounded-xl border-2 bg-card px-3 py-2 text-sm font-semibold"><input type="checkbox" checked={project.featured} onChange={event => updateProject(project.id,'featured',event.target.checked)} /> Featured badge</label><label className="flex items-center gap-2 rounded-xl border-2 bg-card px-3 py-2 text-sm font-semibold"><input type="checkbox" checked={Boolean(project.inProgress)} onChange={event => updateProject(project.id,'inProgress',event.target.checked)} /> Diagonal “In Progress” ribbon</label></div>
                 <div className="mt-4 flex items-center gap-3 rounded-xl border-2 border-dashed bg-card p-3 text-sm"><span className="rounded-lg border bg-sun px-3 py-2 font-bold">#{index + 1}</span><span className="flex-1 text-muted-foreground">Display position</span><input type="number" min={1} max={projects.length} value={orderDrafts[project.id] ?? String(index + 1)} onChange={event => setOrderDrafts(current => ({ ...current, [project.id]: event.target.value }))} onBlur={() => { const draft = orderDrafts[project.id]; if (draft) setProjectOrder(project.id,draft); setOrderDrafts(current => { const next = { ...current }; delete next[project.id]; return next }) }} onKeyDown={event => { if (event.key === "Enter") event.currentTarget.blur() }} className="w-20 rounded-lg border-2 bg-background px-2 py-2 text-center font-bold" /></div>
               </div>}
