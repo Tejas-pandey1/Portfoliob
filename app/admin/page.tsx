@@ -152,6 +152,14 @@ export default function AdminPage() {
       setUploadingImages(current => ({ ...current, [projectId]: false }))
     }
   }
+  function pasteProjectImage(projectId: string, event: React.ClipboardEvent<HTMLDivElement>) {
+    const imageItem = Array.from(event.clipboardData.items).find(item => item.type.startsWith('image/'))
+    const file = imageItem?.getAsFile()
+    if (!file) return
+    event.preventDefault()
+    void uploadProjectImage(projectId, file)
+  }
+
   function addProjectTag(projectId: string) {
     const tag = (tagDrafts[projectId] || '').trim().replace(/,+$/g, '')
     if (!tag) return
@@ -260,12 +268,12 @@ export default function AdminPage() {
                 <div className="mb-5 flex flex-wrap items-center justify-between gap-3"><div><h4 className="font-display text-xl font-extrabold">Project details</h4><p className="text-sm text-muted-foreground">Keep it clear, specific, and honest.</p></div><button onClick={() => { if (window.confirm(`Remove “${project.title}” from the portfolio? This takes effect after saving.`)) { setProjects(current => current.filter(item => item.id !== project.id).map((item, i) => ({...item, order:i+1}))); setExpandedId(null) } }} className="inline-flex items-center gap-2 rounded-full border-2 border-red-300 px-3 py-2 text-sm font-bold text-red-700 hover:bg-red-50"><Trash2 className="size-4" /> Remove</button></div>
                 <div className="grid gap-4 sm:grid-cols-2">
                   {([['title','Project title'],['category','Category / type'],['href','Project URL'],['image','Image URL or path'],['linkLabel','Button label'],['color','Card colour'],['id','Unique ID']] as [keyof Project,string][]).map(([key,label]) => <label key={key} className="flex flex-col gap-1.5 text-sm font-bold">{label}{key === 'color' ? <select value={String(project.color)} onChange={event => updateProject(project.id,key,event.target.value)} className="rounded-xl border-2 bg-card px-3 py-2.5 font-normal">{colorChoices.map(color => <option key={color} value={color}>{color}</option>)}</select> : <input value={String(project[key] ?? '')} onChange={event => updateProject(project.id,key,event.target.value)} placeholder={key === 'image' ? 'https://… or /images/your-screenshot.png' : key === 'href' ? 'https://…' : ''} className="min-w-0 rounded-xl border-2 bg-card px-3 py-2.5 font-normal" />}</label>)}
-                <div className="sm:col-span-2 rounded-2xl border-2 border-dashed bg-card p-4">
+                <div tabIndex={0} onPaste={event => pasteProjectImage(project.id, event)} aria-label={`Paste a copied screenshot for ${project.title}`} className="sm:col-span-2 rounded-2xl border-2 border-dashed bg-card p-4 outline-none focus:ring-2 focus:ring-grape">
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-                    <div className="flex-1"><p className="font-bold">Project screenshot</p><p className="text-xs font-normal text-muted-foreground">Upload from your device or paste any direct image URL above. PNG, JPG, WebP, GIF or AVIF · up to 4 MB.</p></div>
+                    <div className="flex-1"><p className="font-bold">Project screenshot</p><p className="text-xs font-normal text-muted-foreground">Upload a file, or click this screenshot area and press Ctrl+V to paste a copied image. You can also paste a direct image URL above. PNG, JPG, WebP, GIF or AVIF · up to 4 MB.</p></div>
                     <label className={`inline-flex cursor-pointer items-center justify-center gap-2 rounded-full border-2 bg-sun px-4 py-2.5 text-sm font-bold ${uploadingImages[project.id] ? 'pointer-events-none opacity-60' : ''}`}><Upload className="size-4" />{uploadingImages[project.id] ? 'Uploading…' : 'Upload image'}<input type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/avif" className="hidden" disabled={Boolean(uploadingImages[project.id])} onChange={event => { void uploadProjectImage(project.id, event.target.files?.[0]); event.currentTarget.value = '' }} /></label>
                   </div>
-                  {project.image && <div className="mt-3 flex items-center gap-3"><img src={project.image} alt={`Preview for ${project.title || 'project'}`} className="h-24 w-40 rounded-xl border-2 object-cover" /><span className="min-w-0 break-all text-xs font-normal text-muted-foreground">{project.image}</span></div>}
+                  {project.image && <div className="mt-3 flex items-center gap-3"><img src={project.image} alt={`Preview for ${project.title || 'project'}`} className="h-24 w-40 rounded-xl border-2 bg-background object-contain" /><span className="min-w-0 break-all text-xs font-normal text-muted-foreground">{project.image}</span></div>}
                 </div>
                 </div>
                 <label className="mt-4 flex flex-col gap-1.5 text-sm font-bold">Description<textarea value={project.description} onChange={event => updateProject(project.id,'description',event.target.value)} rows={3} maxLength={2000} className="rounded-xl border-2 bg-card px-3 py-2.5 font-normal" /><span className="text-right text-xs font-normal text-muted-foreground">{project.description.length}/2000</span></label>
