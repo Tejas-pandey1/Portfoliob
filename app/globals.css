@@ -96,22 +96,32 @@
   }
   html {
     scroll-behavior: smooth;
-    scrollbar-width: thin;
-    scrollbar-color: var(--foreground) var(--background);
+    scrollbar-width: none;
+    scrollbar-color: transparent transparent;
   }
   ::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
   }
   ::-webkit-scrollbar-track {
-    background: var(--background);
+    background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: var(--foreground);
-    border: 3px solid var(--background);
+    background: transparent;
     border-radius: 999px;
   }
-  ::-webkit-scrollbar-thumb:hover {
+  html.scrollbar-visible {
+    scrollbar-width: thin;
+    scrollbar-color: var(--foreground) transparent;
+  }
+  html.scrollbar-visible::-webkit-scrollbar-thumb {
+    background: var(--foreground);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    border-radius: 999px;
+  }
+  html.scrollbar-visible::-webkit-scrollbar-thumb:hover {
     background: var(--grape);
+    background-clip: padding-box;
   }
   body {
     @apply bg-background text-foreground font-sans;
