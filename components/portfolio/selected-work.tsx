@@ -51,7 +51,7 @@ export function SelectedWork() {
                 {project.href ? (
                   <a href={project.href} target="_blank" rel="noreferrer" aria-label={`${project.linkLabel}: ${project.title}`} className={cn('relative block overflow-hidden rounded-3xl border-2 p-4 shadow-pop transition-transform group-hover:-translate-y-1', colors[project.color] ?? 'bg-card')}>
                     <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border-2 bg-card">
-                      <Image src={project.image} alt={`Preview for ${project.title}`} width={1200} height={750} unoptimized className="absolute inset-0 size-full object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
+                      <Image src={project.image} alt={`Preview for ${project.title}`} width={1200} height={750} unoptimized className="absolute inset-0 size-full transition-transform duration-500 group-hover:scale-[1.02]" style={{ objectFit: project.imageFit ?? 'cover', objectPosition: `${project.imageX ?? 50}% ${project.imageY ?? 50}%`, transform: `scale(${project.imageZoom ?? 1})` }} />
                     </div>
                     <span className="absolute top-7 right-7 rotate-2 rounded-full border-2 bg-card px-3 py-1 text-xs font-bold shadow-pop-sm">{project.linkLabel} ↗</span>
                     {project.inProgress && <span className="absolute -left-10 top-10 -rotate-45 border-y-2 border-foreground bg-sun px-12 py-2 text-xs font-extrabold uppercase tracking-widest shadow-pop-sm">In Progress</span>}
@@ -59,7 +59,7 @@ export function SelectedWork() {
                 ) : (
                   <div className={cn('relative block overflow-hidden rounded-3xl border-2 p-4 shadow-pop', colors[project.color] ?? 'bg-card')}>
                     <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border-2 bg-card">
-                      <Image src={project.image} alt={`Preview for ${project.title}`} width={1200} height={750} unoptimized className="absolute inset-0 size-full object-cover" />
+                      <Image src={project.image} alt={`Preview for ${project.title}`} width={1200} height={750} unoptimized className="absolute inset-0 size-full" style={{ objectFit: project.imageFit ?? 'cover', objectPosition: `${project.imageX ?? 50}% ${project.imageY ?? 50}%`, transform: `scale(${project.imageZoom ?? 1})` }} />
                     </div>
                     <span className="absolute top-7 right-7 rotate-2 rounded-full border-2 bg-card px-3 py-1 text-xs font-bold shadow-pop-sm">{project.linkLabel}</span>
                     {project.inProgress && <span className="absolute -left-10 top-10 -rotate-45 border-y-2 border-foreground bg-sun px-12 py-2 text-xs font-extrabold uppercase tracking-widest shadow-pop-sm">In Progress</span>}
