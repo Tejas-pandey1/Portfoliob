@@ -13,6 +13,7 @@ import initialProjects from '@/data/projects.json'
 type Project = {
   id: string; title: string; category: string; description: string; image: string; stack: string[]
   color: string; href: string; linkLabel: string; featured: boolean; inProgress?: boolean; order?: number
+  imageZoom?: number; imageX?: number; imageY?: number; imageFit?: 'cover' | 'contain'
 }
 type ContactButton = { id: string; label: string; detail: string; href: string; icon: string; color: string; enabled: boolean }
 type Settings = { mascot: string; contactButtons: ContactButton[] }
@@ -42,6 +43,7 @@ export default function AdminPage() {
   const mascotInput = useRef<HTMLInputElement>(null)
   const [tagDrafts, setTagDrafts] = useState<Record<string, string>>({})
   const [uploadingImages, setUploadingImages] = useState<Record<string, boolean>>({})
+  const thumbnailDrag = useRef<{ id: string; x: number; y: number } | null>(null)
   const [signedIn, setSignedIn] = useState(false)
   const [password, setPassword] = useState('')
   const [projects, setProjects] = useState<Project[]>(normalizeProjects(initialProjects as Project[]))
@@ -273,7 +275,47 @@ export default function AdminPage() {
                     <div className="flex-1"><p className="font-bold">Project screenshot</p><p className="text-xs font-normal text-muted-foreground">Upload a file, or click this screenshot area and press Ctrl+V to paste a copied image. You can also paste a direct image URL above. PNG, JPG, WebP, GIF or AVIF · up to 4 MB.</p></div>
                     <label className={`inline-flex cursor-pointer items-center justify-center gap-2 rounded-full border-2 bg-sun px-4 py-2.5 text-sm font-bold ${uploadingImages[project.id] ? 'pointer-events-none opacity-60' : ''}`}><Upload className="size-4" />{uploadingImages[project.id] ? 'Uploading…' : 'Upload image'}<input type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/avif" className="hidden" disabled={Boolean(uploadingImages[project.id])} onChange={event => { void uploadProjectImage(project.id, event.target.files?.[0]); event.currentTarget.value = '' }} /></label>
                   </div>
-                  {project.image && <div className="mt-3 flex items-center gap-3"><img src={project.image} alt={`Preview for ${project.title || 'project'}`} className="h-24 w-40 rounded-xl border-2 bg-background object-contain" /><span className="min-w-0 break-all text-xs font-normal text-muted-foreground">{project.image}</span></div>}
+                  {project.image && <div className="mt-4 grid gap-4 lg:grid-cols-[minmax(0,1.2fr)_minmax(260px,0.8fr)]">
+                    <div>
+                      <p className="mb-2 text-sm font-bold">Thumbnail editor</p>
+                      <p className="mb-3 text-xs font-normal text-muted-foreground">Drag the image inside the frame to reposition it. Zoom and choose whether to crop or fit the whole screenshot.</p>
+                      <div
+                        className="relative aspect-[16/10] w-full touch-none select-none overflow-hidden rounded-2xl border-2 border-foreground bg-background cursor-grab active:cursor-grabbing"
+                        onPointerDown={event => { event.currentTarget.setPointerCapture(event.pointerId); thumbnailDrag.current = { id: project.id, x: event.clientX, y: event.clientY } }}
+                        onPointerMove={event => {
+                          const drag = thumbnailDrag.current
+                          if (!drag || drag.id !== project.id || (event.buttons === 0)) return
+                          const rect = event.currentTarget.getBoundingClientRect()
+                          const dx = event.clientX - drag.x
+                          const dy = event.clientY - drag.y
+                          drag.x = event.clientX; drag.y = event.clientY
+                          const zoom = Math.max(1, Number(project.imageZoom ?? 1))
+                          const maxX = Math.max(0, Math.min(100, Number(project.imageX ?? 50)))
+                          const maxY = Math.max(0, Math.min(100, Number(project.imageY ?? 50)))
+                          const range = Math.max(0, (zoom - 1) * 50)
+                          updateProject(project.id, 'imageX', Math.max(0, Math.min(100, maxX - dx / rect.width * 100 / Math.max(1, zoom) + range * 0)))
+                          updateProject(project.id, 'imageY', Math.max(0, Math.min(100, maxY - dy / rect.height * 100 / Math.max(1, zoom) + range * 0)))
+                        }}
+                        onPointerUp={() => { thumbnailDrag.current = null }}
+                        onPointerCancel={() => { thumbnailDrag.current = null }}
+                        onWheel={event => { event.preventDefault(); updateProject(project.id, 'imageZoom', Math.max(1, Math.min(3, Number((project.imageZoom ?? 1) - Math.sign(event.deltaY) * 0.08).toFixed(2)))) }}
+                      >
+                        <img src={project.image} alt={`Live thumbnail preview for ${project.title || 'project'}`} draggable={false} className="absolute inset-0 size-full pointer-events-none" style={{ objectFit: project.imageFit ?? 'cover', objectPosition: `${project.imageX ?? 50}% ${project.imageY ?? 50}%`, transform: `scale(${project.imageZoom ?? 1})` }} />
+                      </div>
+                      <div className="mt-3 flex flex-wrap gap-2">
+                        <button type="button" onClick={() => updateProject(project.id, 'imageFit', 'cover')} className={`rounded-full border-2 px-3 py-2 text-xs font-bold ${(project.imageFit ?? 'cover') === 'cover' ? 'bg-sun' : 'bg-card'}`}>Crop to fill</button>
+                        <button type="button" onClick={() => updateProject(project.id, 'imageFit', 'contain')} className={`rounded-full border-2 px-3 py-2 text-xs font-bold ${project.imageFit === 'contain' ? 'bg-sun' : 'bg-card'}`}>Fit whole image</button>
+                        <button type="button" onClick={() => { updateProject(project.id, 'imageZoom', 1); updateProject(project.id, 'imageX', 50); updateProject(project.id, 'imageY', 50) }} className="rounded-full border-2 px-3 py-2 text-xs font-bold">Reset position</button>
+                      </div>
+                    </div>
+                    <div className="flex flex-col gap-4 rounded-2xl border-2 bg-card p-4">
+                      <label className="flex flex-col gap-2 text-sm font-bold">Zoom <span className="font-normal text-muted-foreground">{Number(project.imageZoom ?? 1).toFixed(2)}×</span><input type="range" min="1" max="3" step="0.05" value={project.imageZoom ?? 1} onChange={event => updateProject(project.id, 'imageZoom', Number(event.target.value))} /></label>
+                      <label className="flex flex-col gap-2 text-sm font-bold">Horizontal position <span className="font-normal text-muted-foreground">{Math.round(project.imageX ?? 50)}%</span><input type="range" min="0" max="100" value={project.imageX ?? 50} onChange={event => updateProject(project.id, 'imageX', Number(event.target.value))} /></label>
+                      <label className="flex flex-col gap-2 text-sm font-bold">Vertical position <span className="font-normal text-muted-foreground">{Math.round(project.imageY ?? 50)}%</span><input type="range" min="0" max="100" value={project.imageY ?? 50} onChange={event => updateProject(project.id, 'imageY', Number(event.target.value))} /></label>
+                      <p className="break-all text-xs font-normal text-muted-foreground">{project.image}</p>
+                      <div><p className="mb-2 text-xs font-extrabold uppercase tracking-wide text-muted-foreground">Card preview</p><div className={`overflow-hidden rounded-2xl border-2 p-2 ${colorClass[project.color] || 'bg-card'}`}><div className="relative aspect-[16/10] overflow-hidden rounded-xl border-2 bg-card"><img src={project.image} alt="" className="absolute inset-0 size-full" style={{ objectFit: project.imageFit ?? 'cover', objectPosition: `${project.imageX ?? 50}% ${project.imageY ?? 50}%`, transform: `scale(${project.imageZoom ?? 1})` }} /></div><p className="mt-2 truncate text-sm font-extrabold">{project.title || 'Project title'}</p></div></div>
+                    </div>
+                  </div>}
                 </div>
                 </div>
                 <label className="mt-4 flex flex-col gap-1.5 text-sm font-bold">Description<textarea value={project.description} onChange={event => updateProject(project.id,'description',event.target.value)} rows={3} maxLength={2000} className="rounded-xl border-2 bg-card px-3 py-2.5 font-normal" /><span className="text-right text-xs font-normal text-muted-foreground">{project.description.length}/2000</span></label>
