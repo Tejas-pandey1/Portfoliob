@@ -7,7 +7,7 @@ import { SectionHeading } from './section-heading'
 import { cn } from '@/lib/utils'
 import projectsData from '@/data/projects.json'
 
-type Project = (typeof projectsData)[number] & { order?: number }
+type Project = (typeof projectsData)[number] & { order?: number; imageZoom?: number; imageX?: number; imageY?: number; imageFit?: 'cover' | 'contain' }
 const colors: Record<string, string> = {
   mint: 'bg-mint',
   sky: 'bg-sky',
