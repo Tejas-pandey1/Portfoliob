@@ -15,7 +15,7 @@ export function About() {
         <div className="flex flex-1 flex-col gap-8">
           <SectionHeading id="about-title" eyebrow="A bit about me" tagClassName="bg-sun" title={<>Part builder. <span className="text-grape">Part professional tinkerer.</span></>} />
           <div className="flex max-w-xl flex-col gap-5 text-lg leading-relaxed text-pretty text-muted-foreground">
-            <p>I’m Shadow, a student and developer who enjoys figuring things out by making things. I’m interested in web development, practical tools, game development, and the satisfying moment when a half-formed idea finally clicks.</p>
+            <p>I’m Tejas, also known as Shadow, a student and developer who enjoys figuring things out by making things. I’m interested in web development, practical tools, game development, and the satisfying moment when a half-formed idea finally clicks.</p>
             <p>I’m still learning, experimenting, and adding to my toolkit. This portfolio is a work in progress on purpose: I’d rather show real projects as they happen than invent a highlight reel.</p>
           </div>
         </div>
